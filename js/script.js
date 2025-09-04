@@ -463,6 +463,14 @@
       rating: 1.4,
       start: "2023-11-27",
       end: "2023-11-28"
+    },
+    {
+      id:59,
+      name: "Recharge Your Down Battery",
+      thumb: "thumbnail/books/recharge_your_down_battery.jpg",
+      rating: 3.9,
+      start: "2025-02-05",
+      end: "2025-09-04"
     }
   ];
 
