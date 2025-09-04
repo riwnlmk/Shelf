@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>riwnlmk's Shelf</title>
+    <link rel="stylesheet" href="css/style.css"/>                      
+</head>
+<body>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..."/>
+    </div>
+
+    <main class="container">
+        <header class="profile-card">
+            <div class="avatar-wrap">
+                <img src="assets/riwnlmk.png" alt="Md. Ridwanul Islam Muntakim" class="avatar"/>
+            </div>
+
+            <div class="profile-info">
+                <div class="name-row">
+                    <h1>riwnlmk</h1>
+                    <span class="pill">Shelf</span>
+                </div>
+                <p class="subtitle">Moments captured through pages, screens and frames.</p>
+            </div>
+        </header>
+
+        <section class="tabs">
+            <nav class="tab-list" role="tablist" aria-label="Collections">
+                <button class="tab active" data-tab="books" role="tab" aria-selected="true">
+                    Books <span id="bookCount" class="count-badge">0</span>
+                </button>
+                <button class="tab" data-tab="anime" role="tab" aria-selected="false">
+                    Anime <span id="animeCount" class="count-badge">0</span>
+                </button>
+            </nav>
+            
+            <div class="tab-panels">
+                <div id="books" class="panel active" role="tabpanel"></div>
+                <div id="anime" class="panel" role="tabpanel"></div>
+            </div>
+        </section>
+    </main>
+    
+    <script src="js/script.js"></script>
+
+</body>
+</html>
