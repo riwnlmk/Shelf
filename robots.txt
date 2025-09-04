@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riwnlmk.github.io/Shelf/sitemap.xml
