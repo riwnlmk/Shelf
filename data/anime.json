@@ -1,0 +1,402 @@
+[
+{
+      "id":1,
+      "name": "Jujutsu Kaisen",
+      "thumb": "thumbnail/anime/jujutsu_kaisen.jpg",
+      "rating": 4.9,
+      "start": "2024-03-15",
+      "end": "2024-03-16"
+    },
+    {
+      "id":2,
+      "name": "Chainsaw Man",
+      "thumb": "thumbnail/anime/chainsaw_man.jpg",
+      "rating": 4.8,
+      "start": "2024-03-17",
+      "end": "2024-03-19"
+    },
+    {
+      "id":3,
+      "name": "Jujutsu Kaisen 0",
+      "thumb": "thumbnail/anime/jujutsu_kaisen_0.jpg",
+      "rating": 3.1,
+      "start": "2024-03-20",
+      "end": "2024-03-20"
+    },
+    {
+      "id":4,
+      "name": "Suzume",
+      "thumb": "thumbnail/anime/suzume.jpg",
+      "rating": 2.3,
+      "start": "2024-03-21",
+      "end": "2024-03-21"
+    },
+    {
+      "id":5,
+      "name": "Spy x Family",
+      "thumb": "thumbnail/anime/spy_x_family.jpg",
+      "rating": 4.9,
+      "start": "2024-03-22",
+      "end": "2024-03-27"
+    },
+    {
+      "id":6,
+      "name": "Death Note",
+      "thumb": "thumbnail/anime/death_note.jpg",
+      "rating": 4.7,
+      "start": "2024-03-29",
+      "end": "2024-04-06"
+    },
+    {
+      "id":7,
+      "name": "Hyouka",
+      "thumb": "thumbnail/anime/hyouka.jpg",
+      "rating": 2.1,
+      "start": "2024-04-07",
+      "end": "2024-04-12"
+    },
+    {
+      "id":8,
+      "name": "Solo Leveling",
+      "thumb": "thumbnail/anime/solo_leveling.jpg",
+      "rating": 4.9,
+      "start": "2024-04-13",
+      "end": "2024-04-15"
+    },
+    {
+      "id":9,
+      "name": "Demon Slayer",
+      "thumb": "thumbnail/anime/demon_slayer.jpg",
+      "rating": 4.9,
+      "start": "2024-04-16",
+      "end": "2024-04-26"
+    },
+    {
+      "id":10,
+      "name": "Lookism",
+      "thumb": "thumbnail/anime/lookism.jpg",
+      "rating": 4.8,
+      "start": "2024-04-27",
+      "end": "2024-04-28"
+    },
+    {
+      "id":11,
+      "name": "Wind Breaker",
+      "thumb": "thumbnail/anime/wind_breaker.jpg",
+      "rating": 4.7,
+      "start": "2024-04-29",
+      "end": "2024-05-01"
+    },
+    {
+      "id":12,
+      "name": "Viral Hit",
+      "thumb": "thumbnail/anime/viral_hit.jpg",
+      "rating": 4.9,
+      "start": "2024-05-02",
+      "end": "2024-05-04"
+    },
+    {
+      "id":13,
+      "name": "True Beauty",
+      "thumb": "thumbnail/anime/true_beauty.jpg",
+      "rating": 2.9,
+      "start": "2024-05-05",
+      "end": "2024-05-10"
+    },
+    {
+      "id":14,
+      "name": "Your Name",
+      "thumb": "thumbnail/anime/your_name.jpg",
+      "rating": 2.1,
+      "start": "2024-05-11",
+      "end": "2024-05-11"
+    },
+    {
+      "id":15,
+      "name": "Tower of God",
+      "thumb": "thumbnail/anime/tower_of_god.jpg",
+      "rating": 4.9,
+      "start": "2024-05-12",
+      "end": "2024-05-14"
+    },
+    {
+      "id":16,
+      "name": "Tsukimichi",
+      "thumb": "thumbnail/anime/tsukimichi.jpg",
+      "rating": 2.6,
+      "start": "2024-05-15",
+      "end": "2024-05-17"
+    },
+    {
+      "id":17,
+      "name": "The Detective Is Already Dead",
+      "thumb": "thumbnail/anime/the_detective_is_already_dead.jpg",
+      "rating": 2.9,
+      "start": "2024-05-18",
+      "end": "2024-05-20"
+    },
+    {
+      "id":18,
+      "name": "Naruto",
+      "thumb": "thumbnail/anime/naruto.jpg",
+      "rating": 4.9,
+      "start": "2024-05-21",
+      "end": "2024-07-20"
+    },
+    {
+      "id":19,
+      "name": "Alya Sometimes Hides Her Feelings in Russian",
+      "thumb": "thumbnail/anime/alya_sometimes_hides_her_feelings_in_russian.jpg",
+      "rating": 4.9,
+      "start": "2024-07-22",
+      "end": "2024-07-25"
+    },
+    {
+      "id":20,
+      "name": "Bucchigiri",
+      "thumb": "thumbnail/anime/bucchigiri.jpg",
+      "rating": 1.2,
+      "start": "2024-07-26",
+      "end": "2024-07-28"
+    },
+    {
+      "id":21,
+      "name": "Tokyo Revengers",
+      "thumb": "thumbnail/anime/tokyo_revengers.jpg",
+      "rating": 2.5,
+      "start": "2024-07-29",
+      "end": "2024-08-08"
+    },
+    {
+      "id":22,
+      "name": "Blood Prison",
+      "thumb": "thumbnail/anime/naruto_shippuden_blood_prison.jpg",
+      "rating": 1.4,
+      "start": "2024-08-09",
+      "end": "2024-08-09"
+    },
+    {
+      "id":23,
+      "name": "Dr. Stone",
+      "thumb": "thumbnail/anime/dr_stone.jpg",
+      "rating": 4.7,
+      "start": "2024-08-10",
+      "end": "2024-08-22"
+    },
+    {
+      "id":24,
+      "name": "Kaiju No. 8",
+      "thumb": "thumbnail/anime/kaiju_no_8.jpg",
+      "rating": 3.1,
+      "start": "2024-08-24",
+      "end": "2024-08-27"
+    },
+    {
+      "id":25,
+      "name": "Mushoku Tensei",
+      "thumb": "thumbnail/anime/mushoku_tensei.jpg",
+      "rating": 2.1,
+      "start": "2024-08-28",
+      "end": "2024-09-12"
+    },
+    {
+      "id":26,
+      "name": "Mashle",
+      "thumb": "thumbnail/anime/mashle_magic_and_muscles.jpg",
+      "rating": 4.3,
+      "start": "2024-09-14",
+      "end": "2024-09-20"
+    },
+    {
+      "id":27,
+      "name": "My Dress-Up Darling",
+      "thumb": "thumbnail/anime/my_dress_up_darling.jpg",
+      "rating": 4.9,
+      "start": "2024-09-21",
+      "end": "2024-09-24"
+    },
+    {
+      "id":28,
+      "name": "Berserk of Gluttony",
+      "thumb": "thumbnail/anime/berserk_of_gluttony.jpg",
+      "rating": 4.7,
+      "start": "2024-09-26",
+      "end": "2024-09-28"
+    },
+    {
+      "id":29,
+      "name": "Reign of the Seven Spellblades",
+      "thumb": "thumbnail/anime/reign_of_the_seven_spellblades.jpg",
+      "rating": 4.1,
+      "start": "2024-09-29",
+      "end": "2024-10-03"
+    },
+    {
+      "id":30,
+      "name": "The Iceblade Sorcerer Shall Rule the World",
+      "thumb": "thumbnail/anime/the_iceblade_sorcerer_shall_rule_the_world.jpg",
+      "rating": 3.2,
+      "start": "2024-10-05",
+      "end": "2024-10-08"
+    },
+    {
+      "id":31,
+      "name": "My Love Story with Yamada-kun at Lv999",
+      "thumb": "thumbnail/anime/my_love_story_with_yamada_kun_at_lv999.jpg",
+      "rating": 3.1,
+      "start": "2024-10-09",
+      "end": "2024-10-13"
+    },
+    {
+      "id":32,
+      "name": "Radiant",
+      "thumb": "thumbnail/anime/radiant.jpg",
+      "rating": 3.9,
+      "start": "2024-10-15",
+      "end": "2024-10-26"
+    },
+    {
+      "id":33,
+      "name": "Bartender Glass of God",
+      "thumb": "thumbnail/anime/bartender_glass_of_god.jpg",
+      "rating": 4.5,
+      "start": "2024-10-27",
+      "end": "2024-10-30"
+    },
+    {
+      "id":34,
+      "name": "Devil May Cry",
+      "thumb": "thumbnail/anime/devil_may_cry.jpg",
+      "rating": 4.8,
+      "start": "2024-11-02",
+      "end": "2024-11-04"
+    },
+    {
+      "id":35,
+      "name": "The Case Study of Vanitas",
+      "thumb": "thumbnail/anime/the_case_study_of_vanitas.jpg",
+      "rating": 3.1,
+      "start": "2024-11-05",
+      "end": "2024-11-12"
+    },
+    {
+      "id":36,
+      "name": "Akudama Drive",
+      "thumb": "thumbnail/anime/akudama_drive.jpg",
+      "rating": 3.2,
+      "start": "2024-11-15",
+      "end": "2024-11-17"
+    },
+    {
+      "id":37,
+      "name": "Code Geass",
+      "thumb": "thumbnail/anime/code_geass.jpg",
+      "rating": 3.5,
+      "start": "2024-11-18",
+      "end": "2024-12-02"
+    },
+    {
+      "id":38,
+      "name": "Dead Mount Death Play",
+      "thumb": "thumbnail/anime/dead_mount_death_play.jpg",
+      "rating": 4.2,
+      "start": "2024-12-05",
+      "end": "2024-12-11"
+    },
+    {
+      "id":39,
+      "name": "Fire Force",
+      "thumb": "thumbnail/anime/fire_force.jpg",
+      "rating": 4.4,
+      "start": "2024-12-12",
+      "end": "2024-12-26"
+    },
+    {
+      "id":40,
+      "name": "Please Put Them On, Takamine-san",
+      "thumb": "thumbnail/anime/please_put_them_on_takamine_san.jpg",
+      "rating": 4.1,
+      "start": "2024-12-28",
+      "end": "2024-12-28"
+    },
+    {
+      "id":41,
+      "name": "Overflow",
+      "thumb": "thumbnail/anime/overflow.jpg",
+      "rating": 4.9,
+      "start": "2024-12-29",
+      "end": "2024-12-29"
+    },
+    {
+      "id":42,
+      "name": "Vinland Saga",
+      "thumb": "thumbnail/anime/vinland_saga.jpg",
+      "rating": 1.9,
+      "start": "2024-12-30",
+      "end": "2025-01-12"
+    },
+    {
+      "id":43,
+      "name": "Classroom of the Elite",
+      "thumb": "thumbnail/anime/class_room_of_elite.jpg",
+      "rating": 3.4,
+      "start": "2025-01-13",
+      "end": "2025-01-19"
+    },
+    {
+      "id":44,
+      "name": "The Daily Life of the Immortal King",
+      "thumb": "thumbnail/anime/the_daily_life_of_the_immortal_king.jpg",
+      "rating": 3.8,
+      "start": "2025-01-21",
+      "end": "2025-01-27"
+    },
+    {
+      "id":45,
+      "name": "ReLIFE",
+      "thumb": "thumbnail/anime/relife.jpg",
+      "rating": 4.2,
+      "start": "2025-01-28",
+      "end": "2025-01-30"
+    },
+    {
+      "id":46,
+      "name": "Noblesse",
+      "thumb": "thumbnail/anime/noblesse.jpg",
+      "rating": 4.1,
+      "start": "2025-02-02",
+      "end": "2025-02-07"
+    },
+    {
+      "id":47,
+      "name": "Frieren",
+      "thumb": "thumbnail/anime/frieren.jpg",
+      "rating": 4.9,
+      "start": "2025-02-09",
+      "end": "2025-02-22"
+    },
+    {
+      "id":48,
+      "name": "The Apothecary Diaries",
+      "thumb": "thumbnail/anime/the_apothecary_diaries.jpg",
+      "rating": 4.9,
+      "start": "2025-02-24",
+      "end": "2025-03-02"
+    },
+    {
+      "id":49,
+      "name": "Blue Lock",
+      "thumb": "thumbnail/anime/blue_lock.jpg",
+      "rating": 4.1,
+      "start": "2025-03-04",
+      "end": "2025-03-18"
+    },
+    {
+      "id":50,
+      "name": "Days with My Stepsister",
+      "thumb": "thumbnail/anime/days_with_my_stepsister.jpg",
+      "rating": 4.9,
+      "start": "2025-03-20",
+      "end": "2025-03-24"
+    }
+]
