@@ -323,14 +323,14 @@ html, body {
 }
 
 @font-face {
-  font-family: "Hind Siliguri";
-  src: url("../font/HindSiliguri.ttf") format("truetype");
+  font-family: "Qayyum Book";
+  src: url("../font/QayyumBook.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 .post-content p {
-  font-family: "Hind Siliguri", sans-serif;
+  font-family: "Qayyum Book", sans-serif;
   margin: 0;
 }
 
