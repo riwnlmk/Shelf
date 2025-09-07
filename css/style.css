@@ -317,12 +317,20 @@ html, body {
 }
 
 .post-content {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   margin-top: 10px;
 }
 
+@font-face {
+  font-family: "Hind Siliguri";
+  src: url("../font/HindSiliguri.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .post-content p {
+  font-family: "Hind Siliguri", sans-serif;
   margin: 0;
 }
 
