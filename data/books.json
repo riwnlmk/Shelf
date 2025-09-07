@@ -470,5 +470,13 @@
       "rating": 3.9,
       "start": "2025-02-05",
       "end": "2025-09-04"
+    },
+	{
+      "id":60,
+      "name": "গা ছমছমে কলকাতা",
+      "thumb": "thumbnail/books/ga_chhamchhame_kolkata.jpg",
+      "rating": 4.5,
+      "start": "2025-09-07",
+      "end": "2025-09-07"
     }
 ]
