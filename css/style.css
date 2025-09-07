@@ -322,15 +322,7 @@ html, body {
   margin-top: 10px;
 }
 
-@font-face {
-  font-family: "Qayyum Book";
-  src: url("../font/QayyumBook.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .post-content p {
-  font-family: "Qayyum Book", sans-serif;
   margin: 0;
 }
 
