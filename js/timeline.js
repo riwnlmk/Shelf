@@ -33,6 +33,11 @@ function renderTimeline() {
   posts.slice().reverse().forEach(post => {
     const card = document.createElement("div");
     card.className = "post-card";
+
+    const maxLength = 400;
+    let truncated = post.content.length > maxLength;
+    let shortText = truncated ? post.content.slice(0, maxLength) + "..." : post.content;
+
     card.innerHTML = `
       <div class="post-header">
         <img src="${post.avatar}" alt="${post.user}" class="post-avatar">
@@ -42,9 +47,28 @@ function renderTimeline() {
         </div>
       </div>
       <div class="post-content">
-        <p>${post.content}</p>
+        <p class="post-text">${shortText}</p>
+        ${truncated ? `<button class="see-more-btn">See more</button>` : ""}
       </div>
     `;
+
+    if (truncated) {
+      const btn = card.querySelector(".see-more-btn");
+      const textEl = card.querySelector(".post-text");
+      let expanded = false;
+
+      btn.addEventListener("click", () => {
+        expanded = !expanded;
+        if (expanded) {
+          textEl.textContent = post.content;
+          btn.textContent = "See less";
+        } else {
+          textEl.textContent = shortText;
+          btn.textContent = "See more";
+        }
+      });
+    }
+
     timelinePanel.appendChild(card);
   });
 }
