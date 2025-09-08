@@ -27,7 +27,7 @@
     el.innerHTML = `
       <div class="thumb"><img src="${item.thumb}" alt="${escapeHtml(item.name)}"></div>
       <div class="meta">
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div class="meta-header">
           <h3 class="title">${escapeHtml(item.name)}</h3>
           <div class="badge">${type}</div>
         </div>
@@ -36,8 +36,24 @@
           <div>Start: <strong>${formatDate(item.start)}</strong></div>
           <div>End: <strong>${formatDate(item.end)}</strong></div>
         </div>
+        <button class="show-review">Show Review</button>
+        <div class="review">${escapeHtml(item.review || "No review yet.")}</div>
       </div>
     `;
+
+    const btn = el.querySelector('.show-review');
+    const reviewDiv = el.querySelector('.review');
+
+    btn.addEventListener('click', () => {
+        if (reviewDiv.style.display === 'none' || reviewDiv.style.display === '') {
+            reviewDiv.style.display = 'block';
+            btn.textContent = 'Hide Review';
+        } else {
+            reviewDiv.style.display = 'none';
+            btn.textContent = 'Show Review';
+        }
+    });
+
     return el;
   }
 
