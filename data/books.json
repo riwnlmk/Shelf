@@ -478,5 +478,13 @@
       "rating": 4.5,
       "start": "2025-09-07",
       "end": "2025-09-07"
+    },
+	{
+      "id":61,
+      "name": "অরক্ষিত স্বাধীনতাই পরাধীনতা",
+      "thumb": "thumbnail/books/orkhito_sadinotai_poradinota.png",
+      "rating": 3.9,
+      "start": "2025-09-08",
+      "end": "2025-09-08"
     }
 ]
