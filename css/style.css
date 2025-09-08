@@ -345,3 +345,21 @@ html, body {
 .see-more-btn:hover {
   color: #1f7eff;
 }
+
+.social-icons {
+  margin-top: 8px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.social-icons a {
+  font-size: 18px;
+  color: #9da9c7;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
