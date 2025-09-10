@@ -33,7 +33,7 @@
       {
         "type": "code",
         "lang": "python",
-        "code": "print('Hello World')"
+        "code": "print(\"Hello World\")"
       },
       {
         "type": "text",
