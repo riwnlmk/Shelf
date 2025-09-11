@@ -398,5 +398,21 @@
       "rating": 4.9,
       "start": "2025-03-20",
       "end": "2025-03-24"
+    },
+    {
+      "id":51,
+      "name": "My Tiny Senpai",
+      "thumb": "thumbnail/anime/my_tiny_senpai.jpg",
+      "rating": 3.8,
+      "start": "2025-09-09",
+      "end": "2025-09-11"
+    },
+    {
+      "id":52,
+      "name": "Akebi's Sailor Uniform",
+      "thumb": "thumbnail/anime/akebis_sailor_uniform.jpg",
+      "rating": 3.3,
+      "start": "2025-09-11",
+      "end": "2025-09-11"
     }
 ]
