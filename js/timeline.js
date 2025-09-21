@@ -42,6 +42,14 @@ document.querySelectorAll(".tab").forEach(tab => {
     const activeTab = tab.dataset.tab;
 
     if (activeTab === "timeline") {
+      const url = new URL(window.location);
+      if (url.searchParams.has("post")) {
+        url.searchParams.delete("post");
+        window.history.replaceState({}, "", url);
+      }
+
+      filteredPosts = posts;
+      renderTimeline();
       setupTimelineSearch();
     }
   });
