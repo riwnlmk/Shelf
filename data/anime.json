@@ -422,5 +422,13 @@
       "rating": 3.1,
       "start": "2025-09-16",
       "end": "2025-09-16"
+    },
+    {
+      "id":54,
+      "name": "Gachiakuta",
+      "thumb": "thumbnail/anime/gachiakuta.jpg",
+      "rating": 4.8,
+      "start": "2025-09-21",
+      "end": "2025-09-23"
     }
 ]

@@ -495,5 +495,29 @@
       "rating": 3.7,
       "start": "2025-09-13",
       "end": "2025-09-16"
+    },
+    {
+      "id":63,
+      "name": "Stack কথা",
+      "thumb": "thumbnail/books/stack_kotha.jpg",
+      "rating": 4.2,
+      "start": "2025-09-16",
+      "end": "2025-09-16"
+    },
+    {
+      "id":64,
+      "name": "মৌলিক লিনাক্স",
+      "thumb": "thumbnail/books/moulik_linux.jpg",
+      "rating": 4.5,
+      "start": "2025-09-17",
+      "end": "2025-09-20"
+    },
+    {
+      "id":65,
+      "name": "শিখবো ম্যালওয়্যার এনালাইসিস",
+      "thumb": "thumbnail/books/shikhbo_malware_analysis.jpg",
+      "rating": 2.1,
+      "start": "2025-09-20",
+      "end": "2025-09-21"
     }
 ]
