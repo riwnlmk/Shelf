@@ -43,19 +43,25 @@
 
     const btn = el.querySelector('.show-review');
     const reviewDiv = el.querySelector('.review');
-
     btn.addEventListener('click', () => {
-        if (reviewDiv.style.display === 'none' || reviewDiv.style.display === '') {
-            reviewDiv.style.display = 'block';
-            btn.textContent = 'Hide Review';
-        } else {
-            reviewDiv.style.display = 'none';
-            btn.textContent = 'Show Review';
-        }
+      if (reviewDiv.style.display === 'none' || reviewDiv.style.display === '') {
+        reviewDiv.style.display = 'block';
+        btn.textContent = 'Hide Review';
+      } else {
+        reviewDiv.style.display = 'none';
+        btn.textContent = 'Show Review';
+      }
     });
 
+    const thumbImg = el.querySelector('.thumb img');
+    thumbImg.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = lightbox.querySelector('img');
+      lightboxImg.src = item.thumb;
+      lightbox.classList.add('active');
+    });
     return el;
-  }
+}
 
   function updateCounts() {
     if(document.getElementById("bookCount")) document.getElementById("bookCount").textContent = books.length;
@@ -155,8 +161,21 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    setupTabs();
-    setupSearch();
-    loadData();
+  setupTabs();
+  setupSearch();
+  loadData();
+
+  const lightbox = document.getElementById('lightbox');
+  const closeBtn = lightbox.querySelector('.close-btn');
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+    }
   });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+  });
+});
 })();

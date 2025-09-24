@@ -541,3 +541,42 @@ html, body {
   opacity: 1;
   bottom: 50px;
   }
+
+#lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+#lightbox .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#lightbox .close-btn:hover {
+  color: red;
+}
