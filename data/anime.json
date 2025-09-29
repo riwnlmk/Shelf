@@ -430,5 +430,13 @@
       "rating": 4.8,
       "start": "2025-09-21",
       "end": "2025-09-23"
+    },
+    {
+      "id":55,
+      "name": "The Angel Next Door Spoils Me Rotten",
+      "thumb": "thumbnail/anime/the_angel_next_door_spoils_me_rotten.jpg",
+      "rating": 4.9,
+      "start": "2025-09-23",
+      "end": "2025-09-29"
     }
 ]
