@@ -374,8 +374,8 @@ html, body {
 }
 
 .matrix-icon {
-  width: 22px;
-  height: 22px;
+  width: 23px;
+  height: 23px;
   filter: brightness(0) saturate(100%) invert(81%) sepia(15%) saturate(404%) hue-rotate(194deg) brightness(93%) contrast(94%);
   transition: filter 0.3s ease, transform 0.3s ease;
 }
