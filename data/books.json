@@ -519,5 +519,13 @@
       "rating": 2.1,
       "start": "2025-09-20",
       "end": "2025-09-21"
+    },
+    {
+      "id":66,
+      "name": "কুয়াশার ফুল",
+      "thumb": "thumbnail/books/kuashar_phool.jpg",
+      "rating": 2.5,
+      "start": "2025-09-21",
+      "end": "2025-10-02"
     }
 ]
