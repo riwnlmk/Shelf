@@ -154,7 +154,16 @@ function renderTimeline() {
           }
         }
         totalLength += block.code.length;
-      }
+      } else if (block.type === "image") {
+          blockHtml = `
+            <div class="post-image">
+              <img src="${block.src}" alt="Post Image">
+              ${block.caption ? `<p class="caption">${block.caption}</p>` : ""}
+            </div>
+          `;
+          fullBodyHtml += blockHtml;
+          if (!truncated) shortBodyHtml += blockHtml;
+        }
     });
 
     card.innerHTML =
