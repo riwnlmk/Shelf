@@ -454,5 +454,13 @@
       "rating": 4.9,
       "start": "2025-10-07",
       "end": "2025-10-07"
+    },
+    {
+      "id":58,
+      "name": "An Archdemon's Dilemma",
+      "thumb": "thumbnail/anime/an_archdemons_dilemma.jpg",
+      "rating": 4.9,
+      "start": "2025-10-07",
+      "end": "2025-10-11"
     }
 ]
