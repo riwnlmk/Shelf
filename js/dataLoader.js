@@ -160,9 +160,53 @@
       .catch(err => console.error('Error loading anime:', err));
   }
 
+  function setupThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Get saved theme or default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    
+    // Apply saved theme
+    if (savedTheme === 'light') {
+      html.setAttribute('data-theme', 'light');
+      updateThemeToggle('light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      updateThemeToggle('dark');
+    }
+    
+    // Theme toggle functionality
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeToggle(newTheme);
+    });
+  }
+  
+  function updateThemeToggle(theme) {
+    const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+    
+    const moonIcon = themeToggle.querySelector('.moon-icon');
+    const sunIcon = themeToggle.querySelector('.sun-icon');
+    
+    if (theme === 'light') {
+      if (moonIcon) moonIcon.style.display = 'none';
+      if (sunIcon) sunIcon.style.display = 'block';
+    } else {
+      if (moonIcon) moonIcon.style.display = 'block';
+      if (sunIcon) sunIcon.style.display = 'none';
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
   setupTabs();
   setupSearch();
+  setupThemeToggle();
   loadData();
 
   const lightbox = document.getElementById('lightbox');
