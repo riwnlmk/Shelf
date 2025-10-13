@@ -214,6 +214,10 @@ html, body {
   font-size: 13px;
   color: var(--accent);
   font-weight: 700;
+  border-radius: 12px;
+  background: rgba(110,231,183,0.1);
+  width: fit-content;
+  padding: 2px 8px;
 }
 
 .meta .dates {
