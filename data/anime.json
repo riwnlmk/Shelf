@@ -462,5 +462,13 @@
       "rating": 4.9,
       "start": "2025-10-07",
       "end": "2025-10-11"
+    },
+    {
+      "id":59,
+      "name": "Lord of Mysteries",
+      "thumb": "thumbnail/anime/lord_of_mysteries.jpg",
+      "rating": 4.3,
+      "start": "2025-10-18",
+      "end": "2025-11-22"
     }
 ]
