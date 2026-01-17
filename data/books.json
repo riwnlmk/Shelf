@@ -535,5 +535,21 @@
       "rating": 4.7,
       "start": "2025-10-02",
       "end": "2025-10-13"
+    },
+    {
+      "id":68,
+      "name": "Super Conscious Mind",
+      "thumb": "thumbnail/books/super_conscious_mind.jpg",
+      "rating": 4.8,
+      "start": "2026-01-13",
+      "end": "2026-01-13"
+    },
+    {
+      "id":69,
+      "name": "Talking with Psychopaths and Savages",
+      "thumb": "thumbnail/books/talking_with_psychopaths_and_savages.jpg",
+      "rating": 3.7,
+      "start": "2026-01-13",
+      "end": "2026-01-13"
     }
 ]
