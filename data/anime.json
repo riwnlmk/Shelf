@@ -470,5 +470,21 @@
       "rating": 4.3,
       "start": "2025-10-18",
       "end": "2025-11-22"
+    },
+    {
+      "id":60,
+      "name": "Tomo-chan Is a Girl",
+      "thumb": "thumbnail/anime/tomo_chan_is_a_girl.jpg",
+      "rating": 2.8,
+      "start": "2026-01-03",
+      "end": "2026-01-06"
+    },
+    {
+      "id":61,
+      "name": "X&Y",
+      "thumb": "thumbnail/anime/x&y.jpg",
+      "rating": 4.8,
+      "start": "2026-01-13",
+      "end": "2026-01-18"
     }
 ]
