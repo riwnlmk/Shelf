@@ -551,5 +551,13 @@
       "rating": 3.7,
       "start": "2026-01-13",
       "end": "2026-01-13"
+    },
+    {
+      "id":70,
+      "name": "Milk and honey",
+      "thumb": "thumbnail/books/milk_and_honey.jpg",
+      "rating": 2.7,
+      "start": "2026-02-09",
+      "end": "2026-02-09"
     }
 ]
