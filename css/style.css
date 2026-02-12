@@ -624,6 +624,6 @@ html, body {
 
 @media (max-width: 520px) {
   .post-image img {
-    max-width: 80%;
+    max-width: 95%;
   }
 }
