@@ -559,5 +559,21 @@
       "rating": 2.7,
       "start": "2026-02-09",
       "end": "2026-02-09"
+    },
+    {
+      "id":71,
+      "name": "7 Secrets Of Human Gut",
+      "thumb": "thumbnail/books/7_secrets_of_human_gut.jpg",
+      "rating": 4.2,
+      "start": "2026-02-05",
+      "end": "2026-02-12"
+    },
+    {
+      "id":72,
+      "name": "Detox Your Mind",
+      "thumb": "thumbnail/books/detox_your_mind.jpg",
+      "rating": 4.9,
+      "start": "2026-02-05",
+      "end": "2026-02-12"
     }
 ]
