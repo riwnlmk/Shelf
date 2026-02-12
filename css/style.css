@@ -606,7 +606,7 @@ html, body {
 }
 
 .post-image img {
-  max-width: 100%;
+  max-width: 50%;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
@@ -620,4 +620,10 @@ html, body {
   font-size: 0.9em;
   color: #888;
   margin-top: 5px;
+}
+
+@media (max-width: 520px) {
+  .post-image img {
+    max-width: 80%;
+  }
 }
