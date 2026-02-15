@@ -575,5 +575,29 @@
       "rating": 4.9,
       "start": "2026-02-05",
       "end": "2026-02-12"
+    },
+    {
+      "id":73,
+      "name": "8 Brain Rules",
+      "thumb": "thumbnail/books/8_brain_rules.jpg",
+      "rating": 3.2,
+      "start": "2026-02-07",
+      "end": "2026-02-15"
+    },
+    {
+      "id":74,
+      "name": "The Magic of Thinking Big",
+      "thumb": "thumbnail/books/the_magic_of_thinking_big.jpg",
+      "rating": 2.1,
+      "start": "2026-02-07",
+      "end": "2026-02-15"
+    },
+    {
+      "id":75,
+      "name": "1984",
+      "thumb": "thumbnail/books/1984.jpeg",
+      "rating": 4.7,
+      "start": "2026-02-07",
+      "end": "2026-02-16"
     }
 ]
