@@ -599,5 +599,21 @@
       "rating": 4.7,
       "start": "2026-02-07",
       "end": "2026-02-16"
+    },
+    {
+      "id":76,
+      "name": "ইকিগাই",
+      "thumb": "thumbnail/books/ikigai.jpg",
+      "rating": 4.9,
+      "start": "2026-03-28",
+      "end": "2026-03-28"
+    },
+    {
+      "id":77,
+      "name": "দ্য র‍্যাশনাল মেল",
+      "thumb": "thumbnail/books/the_rational_male.png",
+      "rating": 4.9,
+      "start": "2026-03-28",
+      "end": "2026-03-28"
     }
 ]
