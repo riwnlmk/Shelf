@@ -494,5 +494,21 @@
       "rating": 1.2,
       "start": "2026-01-28",
       "end": "2026-01-29"
+    },
+    {
+      "id":63,
+      "name": "The Great Cleric",
+      "thumb": "thumbnail/anime/the_great_cleric.jpg",
+      "rating": 5.0,
+      "start": "2026-03-07",
+      "end": "2026-03-10"
+    },
+    {
+      "id":64,
+      "name": "The Wrong Way to Use Healing Magic",
+      "thumb": "thumbnail/anime/the_wrong_way_to_use_healing_magic.jpg",
+      "rating": 5.0,
+      "start": "2026-03-17",
+      "end": "2026-03-21"
     }
 ]
