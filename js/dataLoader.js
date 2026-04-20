@@ -31,7 +31,7 @@
           <h3 class="title">${escapeHtml(item.name)}</h3>
           <div class="badge">${type}</div>
         </div>
-        <div class="rating">★ ${item.rating}</div>
+        <div class="rating">★ ${Number(item.rating).toFixed(1)}</div>
         <div class="dates">
           <div>Start: <strong>${formatDate(item.start)}</strong></div>
           <div>End: <strong>${formatDate(item.end)}</strong></div>
