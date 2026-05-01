@@ -615,5 +615,29 @@
       "rating": 4.9,
       "start": "2026-03-28",
       "end": "2026-03-28"
+    },
+    {
+      "id":78,
+      "name": "বিল্ড ইউর সিস্টেম",
+      "thumb": "thumbnail/books/build_your_system.jpg",
+      "rating": 5.0,
+      "start": "2026-04-18",
+      "end": "2026-05-01"
+    },
+    {
+      "id":79,
+      "name": "দ্য প্রিন্স",
+      "thumb": "thumbnail/books/the_prince.jpg",
+      "rating": 5.0,
+      "start": "2026-04-18",
+      "end": "2026-05-01"
+    },
+    {
+      "id":80,
+      "name": "মডেলস",
+      "thumb": "thumbnail/books/models.jpg",
+      "rating": 5.0,
+      "start": "2026-04-18",
+      "end": "2026-05-01"
     }
 ]
