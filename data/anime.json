@@ -510,5 +510,13 @@
       "rating": 5.0,
       "start": "2026-03-17",
       "end": "2026-03-21"
+    },
+    {
+      "id":65,
+      "name": "Daemons of the Shadow Realm",
+      "thumb": "thumbnail/anime/daemons_of_the_shadow_realm.jpg",
+      "rating": 4.3,
+      "start": "2026-05-01",
+      "end": "2026-05-01"
     }
 ]
