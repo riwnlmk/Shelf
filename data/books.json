@@ -639,5 +639,13 @@
       "rating": 5.0,
       "start": "2026-04-18",
       "end": "2026-05-01"
+    },
+    {
+      "id":81,
+      "name": "রিড পিপল লাইক অ্যা বুক",
+      "thumb": "thumbnail/books/read_people_like_a_book.jpg",
+      "rating": 3.4,
+      "start": "2026-05-01",
+      "end": "2026-05-05"
     }
 ]
