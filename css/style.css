@@ -666,3 +666,13 @@ html, body {
   opacity: 1;
   transform: translateX(2px);
 }
+
+.inline-code {
+  background: rgba(255,255,255,0.08);
+  color: #DEAC76;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-family: monospace;
+  border: 1px solid rgba(255,255,255,0.06);
+}
