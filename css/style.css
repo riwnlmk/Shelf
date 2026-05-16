@@ -676,3 +676,123 @@ html, body {
   font-family: monospace;
   border: 1px solid rgba(255,255,255,0.06);
 }
+
+.skills-section {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 18px;
+  margin-top: 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.skills-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.skills-title i {
+  color: var(--accent);
+  font-size: 17px;
+}
+
+.skills-group {
+  margin-bottom: 18px;
+}
+
+.skills-group:last-child {
+  margin-bottom: 0;
+}
+
+.skills-group h3 {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: #f8fafc;
+  transition: 0.2s ease;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.skill-card:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.06);
+}
+
+.skill-card img,
+.skill-card i {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  font-size: 17px;
+  color: var(--accent);
+}
+
+.skill-card span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 15px;
+    border-radius: 18px;
+    margin-top: 16px;
+  }
+
+  .skills-title {
+    font-size: 17px;
+  }
+
+  .skills-grid {
+    gap: 8px;
+  }
+
+  .skill-card {
+    padding: 9px 12px;
+    border-radius: 12px;
+  }
+
+  .skill-card span {
+    font-size: 13px;
+  }
+
+  .skill-card img,
+  .skill-card i {
+    width: 16px;
+    height: 16px;
+    font-size: 15px;
+  }
+}
