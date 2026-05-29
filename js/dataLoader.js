@@ -10,6 +10,9 @@
   let books = [];
   let anime = [];
 
+  let allBooks = [];
+  let allAnime = [];
+
   function formatDate(d) {
 
     try {
@@ -206,12 +209,12 @@
 
     if (bookCount) {
       bookCount.textContent =
-        books.length;
+        allBooks.length;
     }
 
     if (animeCount) {
       animeCount.textContent =
-        anime.length;
+        allAnime.length;
     }
   }
 
@@ -392,11 +395,113 @@
           "data/anime.json"
         );
 
-      books =
+      allBooks =
         await booksRes.json();
 
-      anime =
+      allAnime =
         await animeRes.json();
+
+      books = [...allBooks];
+      anime = [...allAnime];
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const bookId =
+        params.get("book");
+
+      const animeId =
+        params.get("anime");
+
+      if (bookId) {
+
+        const singleBook =
+          allBooks.find(
+            item =>
+              String(item.id) ===
+              bookId
+          );
+
+        books = singleBook
+          ? [singleBook]
+          : [];
+
+        document
+          .querySelectorAll(".tab")
+          .forEach(t =>
+            t.classList.remove(
+              "active"
+            )
+          );
+
+        document
+          .querySelectorAll(".panel")
+          .forEach(p =>
+            p.classList.remove(
+              "active"
+            )
+          );
+
+        document
+          .querySelector(
+            '[data-tab="books"]'
+          )
+          ?.classList.add(
+            "active"
+          );
+
+        document
+          .getElementById("books")
+          ?.classList.add(
+            "active"
+          );
+      }
+
+      if (animeId) {
+
+        const singleAnime =
+          allAnime.find(
+            item =>
+              String(item.id) ===
+              animeId
+          );
+
+        anime = singleAnime
+          ? [singleAnime]
+          : [];
+
+        document
+          .querySelectorAll(".tab")
+          .forEach(t =>
+            t.classList.remove(
+              "active"
+            )
+          );
+
+        document
+          .querySelectorAll(".panel")
+          .forEach(p =>
+            p.classList.remove(
+              "active"
+            )
+          );
+
+        document
+          .querySelector(
+            '[data-tab="anime"]'
+          )
+          ?.classList.add(
+            "active"
+          );
+
+        document
+          .getElementById("anime")
+          ?.classList.add(
+            "active"
+          );
+      }
 
       renderList(
         "books",
@@ -472,24 +577,43 @@
           }
 
           if (searchInput) {
-
             searchInput.value = "";
-
-            currentPage.books = 1;
-            currentPage.anime = 1;
-
-            renderList(
-              "books",
-              books,
-              "Book"
-            );
-
-            renderList(
-              "anime",
-              anime,
-              "Anime"
-            );
           }
+
+          currentPage.books = 1;
+          currentPage.anime = 1;
+
+          books = [...allBooks];
+          anime = [...allAnime];
+
+          renderList(
+            "books",
+            books,
+            "Book"
+          );
+
+          renderList(
+            "anime",
+            anime,
+            "Anime"
+          );
+
+          const url =
+            new URL(window.location);
+
+          url.searchParams.delete(
+            "book"
+          );
+
+          url.searchParams.delete(
+            "anime"
+          );
+
+          window.history.replaceState(
+            {},
+            "",
+            url
+          );
         }
       );
     });
@@ -514,14 +638,14 @@
             .trim();
 
         const filteredBooks =
-          books.filter(item =>
+          allBooks.filter(item =>
             item.name
               .toLowerCase()
               .includes(query)
           );
 
         const filteredAnime =
-          anime.filter(item =>
+          allAnime.filter(item =>
             item.name
               .toLowerCase()
               .includes(query)
