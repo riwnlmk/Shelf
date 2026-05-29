@@ -1,35 +1,29 @@
 let posts = [];
-
 let filteredPosts = [];
 
 async function loadPosts() {
-
   try {
-
-    const res =
-      await fetch("data/posts.json");
+    const res = await fetch("data/posts.json");
 
     posts = await res.json();
-
     filteredPosts = posts;
 
-    const postId =
-      new URLSearchParams(
-        window.location.search
-      ).get("post");
+    const postId = new URLSearchParams(
+      window.location.search
+    ).get("post");
 
     if (postId) {
-
-      document.querySelectorAll(".tab")
+      document
+        .querySelectorAll(".tab")
         .forEach(t => t.classList.remove("active"));
 
-      document.querySelectorAll(".panel")
+      document
+        .querySelectorAll(".panel")
         .forEach(p => p.classList.remove("active"));
 
-      const timelineTab =
-        document.querySelector(
-          '.tab[data-tab="timeline"]'
-        );
+      const timelineTab = document.querySelector(
+        '.tab[data-tab="timeline"]'
+      );
 
       if (timelineTab) {
         timelineTab.classList.add("active");
@@ -42,17 +36,15 @@ async function loadPosts() {
         timelinePanel.classList.add("active");
       }
 
-      const single =
-        posts.find(p => p.id == postId);
+      const single = posts.find(
+        p => p.id == postId
+      );
 
-      filteredPosts =
-        single ? [single] : [];
+      filteredPosts = single ? [single] : [];
     }
 
     renderTimeline();
-
   } catch (err) {
-
     console.error(
       "Error loading posts:",
       err
@@ -60,11 +52,10 @@ async function loadPosts() {
   }
 }
 
-document.querySelectorAll(".tab")
+document
+  .querySelectorAll(".tab")
   .forEach(tab => {
-
     tab.addEventListener("click", () => {
-
       const current =
         document.querySelector(".tab.active");
 
@@ -74,16 +65,12 @@ document.querySelectorAll(".tab")
 
       tab.classList.add("active");
 
-      const activeTab =
-        tab.dataset.tab;
+      const activeTab = tab.dataset.tab;
 
       if (activeTab === "timeline") {
-
-        const url =
-          new URL(window.location);
+        const url = new URL(window.location);
 
         if (url.searchParams.has("post")) {
-
           url.searchParams.delete("post");
 
           window.history.replaceState(
@@ -101,14 +88,12 @@ document.querySelectorAll(".tab")
   });
 
 function setupTimelineSearch() {
-
   const input =
     document.getElementById("searchInput");
 
   if (!input) return;
 
   input.addEventListener("input", function () {
-
     const activeTab =
       document.querySelector(".tab.active")
         ?.dataset.tab;
@@ -117,24 +102,24 @@ function setupTimelineSearch() {
       return;
     }
 
-    let filter =
-      this.value.toLowerCase().trim();
+    let filter = this.value
+      .toLowerCase()
+      .trim();
 
     filteredPosts = posts.filter(post =>
-
       post.blocks.some(block =>
-
-        (block.type === "text" &&
+        (
+          block.type === "text" &&
           block.content
             .toLowerCase()
-            .includes(filter))
-
-        ||
-
-        (block.type === "code" &&
+            .includes(filter)
+        ) ||
+        (
+          block.type === "code" &&
           block.code
             .toLowerCase()
-            .includes(filter))
+            .includes(filter)
+        )
       )
     );
 
@@ -142,12 +127,15 @@ function setupTimelineSearch() {
   });
 }
 
-function formatTextBlock(text) {
-
-  text = text
+function escapeHtml(text) {
+  return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
+}
+
+function formatTextBlock(text) {
+  text = escapeHtml(text);
 
   text = text.replace(
     /`([^`]+)`/g,
@@ -160,21 +148,21 @@ function formatTextBlock(text) {
 }
 
 function renderTimeline() {
-
   const timelinePanel =
     document.getElementById("timeline");
 
   timelinePanel.innerHTML = "";
 
   if (filteredPosts.length === 0) {
-
     timelinePanel.innerHTML =
       `<p class="empty">No posts found.</p>`;
 
     return;
   }
 
-  filteredPosts.slice().reverse()
+  filteredPosts
+    .slice()
+    .reverse()
     .forEach(post => {
 
       const card =
@@ -183,52 +171,44 @@ function renderTimeline() {
       card.className = "post-card";
 
       let headerHtml = `
-        <div class="post-header">
+<div class="post-header">
+  <img
+    src="${post.avatar}"
+    alt="${post.user}"
+    class="post-avatar"
+  >
 
-          <img
-            src="${post.avatar}"
-            alt="${post.user}"
-            class="post-avatar"
-          >
+  <div class="post-userinfo">
+    <span class="post-username">
+      ${post.user}
+    </span>
 
-          <div class="post-userinfo">
-            <span class="post-username">
-              ${post.user}
-            </span>
+    <span class="post-date">
+      ${post.date}
+    </span>
+  </div>
 
-            <span class="post-date">
-              ${post.date}
-            </span>
-          </div>
+  <div class="post-options">
+    <button class="post-options-btn">
+      ⋮
+    </button>
 
-          <div class="post-options">
-
-            <button class="post-options-btn">
-              ⋮
-            </button>
-
-            <div class="post-options-menu">
-
-              <button onclick="sharePost('${post.id}')">
-                <i class="fa-solid fa-share"></i>
-                Share
-              </button>
-
-            </div>
-
-          </div>
-
-        </div>
-      `;
+    <div class="post-options-menu">
+      <button onclick="sharePost('${post.id}')">
+        <i class="fa-solid fa-share"></i>
+        Share
+      </button>
+    </div>
+  </div>
+</div>
+`;
 
       const maxLength = 400;
 
       let totalLength = 0;
-
       let truncated = false;
 
       let fullBodyHtml = "";
-
       let shortBodyHtml = "";
 
       post.blocks.forEach(block => {
@@ -238,12 +218,12 @@ function renderTimeline() {
         if (block.type === "text") {
 
           blockHtml = `
-            <div class="post-content">
-              <p>
-                ${formatTextBlock(block.content)}
-              </p>
-            </div>
-          `;
+<div class="post-content">
+  <p>
+    ${formatTextBlock(block.content)}
+  </p>
+</div>
+`;
 
           fullBodyHtml += blockHtml;
 
@@ -264,17 +244,17 @@ function renderTimeline() {
               if (remaining > 0) {
 
                 shortBodyHtml += `
-                  <div class="post-content">
-                    <p>
-                      ${formatTextBlock(
-                        block.content.slice(
-                          0,
-                          remaining
-                        )
-                      )}
-                    </p>
-                  </div>
-                `;
+<div class="post-content">
+  <p>
+    ${formatTextBlock(
+      block.content.slice(
+        0,
+        remaining
+      )
+    )}
+  </p>
+</div>
+`;
               }
 
               truncated = true;
@@ -286,33 +266,30 @@ function renderTimeline() {
 
         else if (block.type === "code") {
 
+          const escapedCode =
+            escapeHtml(block.code);
+
           blockHtml = `
-            <div class="code-card">
+<div class="code-card">
 
-              <div class="code-header">
+  <div class="code-header">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
 
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+    <button
+      class="copy-btn"
+      onclick="copyCode(this)"
+    >
+      <i class="fas fa-copy"></i>
+      Copy
+    </button>
+  </div>
 
-                <button
-                  class="copy-btn"
-                  onclick="copyCode(this)"
-                >
-                  <i class="fas fa-copy"></i>
-                  Copy
-                </button>
+  <pre><code class="language-${block.lang}">${escapedCode}</code></pre>
 
-              </div>
-
-              <pre>
-                <code class="language-${block.lang}">
-${block.code}
-                </code>
-              </pre>
-
-            </div>
-          `;
+</div>
+`;
 
           fullBodyHtml += blockHtml;
 
@@ -337,25 +314,25 @@ ${block.code}
         else if (block.type === "image") {
 
           blockHtml = `
-            <div class="post-image">
+<div class="post-image">
 
-              <img
-                src="${block.src}"
-                alt="Post Image"
-              >
+  <img
+    src="${block.src}"
+    alt="Post Image"
+  >
 
-              ${
-                block.caption
-                  ? `
-                    <p class="caption">
-                      ${block.caption}
-                    </p>
-                  `
-                  : ""
-              }
+  ${
+    block.caption
+      ? `
+<p class="caption">
+  ${block.caption}
+</p>
+`
+      : ""
+  }
 
-            </div>
-          `;
+</div>
+`;
 
           fullBodyHtml += blockHtml;
 
@@ -368,26 +345,28 @@ ${block.code}
       card.innerHTML =
         headerHtml +
         `
-        <div class="post-body">
+<div class="post-body">
 
-          <div class="post-text">
-            ${truncated
-              ? shortBodyHtml
-              : fullBodyHtml}
-          </div>
+  <div class="post-text">
+    ${
+      truncated
+        ? shortBodyHtml
+        : fullBodyHtml
+    }
+  </div>
 
-          ${
-            truncated
-              ? `
-                <button class="see-more-btn">
-                  See more
-                </button>
-              `
-              : ""
-          }
+  ${
+    truncated
+      ? `
+<button class="see-more-btn">
+  See more
+</button>
+`
+      : ""
+  }
 
-        </div>
-      `;
+</div>
+`;
 
       if (truncated) {
 
@@ -405,19 +384,23 @@ ${block.code}
 
           if (expanded) {
 
-            textEl.innerHTML = fullBodyHtml;
+            textEl.innerHTML =
+              fullBodyHtml;
 
             Prism.highlightAll();
 
-            btn.textContent = "See less";
+            btn.textContent =
+              "See less";
 
           } else {
 
-            textEl.innerHTML = shortBodyHtml;
+            textEl.innerHTML =
+              shortBodyHtml;
 
             Prism.highlightAll();
 
-            btn.textContent = "See more";
+            btn.textContent =
+              "See more";
           }
         });
       }
@@ -431,11 +414,13 @@ ${block.code}
 function copyCode(btn) {
 
   const code =
-    btn.closest(".code-card")
+    btn
+      .closest(".code-card")
       .querySelector("code")
       .innerText;
 
-  navigator.clipboard.writeText(code)
+  navigator.clipboard
+    .writeText(code)
     .then(() => {
 
       btn.innerHTML =
@@ -472,12 +457,13 @@ document.addEventListener("click", (e) => {
 
   } else {
 
-    document.querySelectorAll(
-      ".post-options-menu"
-    ).forEach(m => {
-
-      m.style.display = "none";
-    });
+    document
+      .querySelectorAll(
+        ".post-options-menu"
+      )
+      .forEach(m => {
+        m.style.display = "none";
+      });
   }
 });
 
@@ -486,12 +472,14 @@ function sharePost(postId) {
   const url =
     `${window.location.origin}${window.location.pathname}?post=${postId}`;
 
-  navigator.clipboard.writeText(url)
+  navigator.clipboard
+    .writeText(url)
     .then(() => {
 
       showToast(
         "Link copied successfully"
       );
+
     })
     .catch(err => {
 
@@ -512,9 +500,7 @@ function showToast(message) {
   toast.classList.add("show");
 
   setTimeout(() => {
-
     toast.classList.remove("show");
-
   }, 3000);
 }
 
