@@ -64,13 +64,9 @@
 
   <div class="meta-header">
 
-    <h3 class="title">
-      ${escapeHtml(item.name)}
-    </h3>
+    <h3 class="title">${escapeHtml(item.name)}</h3>
 
-    <div class="badge">
-      ${type}
-    </div>
+    <div class="badge">${type}</div>
 
   </div>
 
@@ -82,16 +78,12 @@
 
     <div>
       Start:
-      <strong>
-        ${formatDate(item.start)}
-      </strong>
+      <strong>${formatDate(item.start)}</strong>
     </div>
 
     <div>
       End:
-      <strong>
-        ${formatDate(item.end)}
-      </strong>
+      <strong>${formatDate(item.end)}</strong>
     </div>
 
   </div>
@@ -100,7 +92,7 @@
     Show Review
   </button>
 
-  <div class="review">${escapeHtml(
+  <div class="review" style="display:none;">${escapeHtml(
     item.review || "No review yet."
   )}</div>
 
@@ -118,21 +110,22 @@
     const reviewDiv =
       el.querySelector(".review");
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener(
+      "click",
+      () => {
 
-      const open =
-        reviewDiv.classList.contains(
-          "active"
-        );
+        const open =
+          reviewDiv.style.display ===
+          "block";
 
-      reviewDiv.classList.toggle(
-        "active"
-      );
+        reviewDiv.style.display =
+          open ? "none" : "block";
 
-      btn.textContent = open
-        ? "Show Review"
-        : "Hide Review";
-    });
+        btn.textContent = open
+          ? "Show Review"
+          : "Hide Review";
+      }
+    );
 
     const thumbImg =
       el.querySelector(".thumb img");
@@ -567,6 +560,8 @@
           "lightbox"
         );
 
+      if (!lightbox) return;
+
       const closeBtn =
         lightbox.querySelector(
           ".close-btn"
@@ -577,6 +572,7 @@
         (e) => {
 
           if (e.target === lightbox) {
+
             lightbox.classList.remove(
               "active"
             );
@@ -584,15 +580,18 @@
         }
       );
 
-      closeBtn.addEventListener(
-        "click",
-        () => {
+      if (closeBtn) {
 
-          lightbox.classList.remove(
-            "active"
-          );
-        }
-      );
+        closeBtn.addEventListener(
+          "click",
+          () => {
+
+            lightbox.classList.remove(
+              "active"
+            );
+          }
+        );
+      }
     }
   );
 
