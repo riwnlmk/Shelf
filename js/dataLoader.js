@@ -16,11 +16,14 @@
 
       const dt = new Date(d);
 
-      return dt.toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric"
-      });
+      return dt.toLocaleDateString(
+        undefined,
+        {
+          year: "numeric",
+          month: "short",
+          day: "numeric"
+        }
+      );
 
     } catch (e) {
 
@@ -30,114 +33,168 @@
 
   function escapeHtml(s) {
 
-    return String(s).replace(/[&<>"']/g, (m) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[m]));
+    return String(s).replace(
+      /[&<>"']/g,
+      (m) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[m])
+    );
   }
 
   function makeCard(item, type) {
 
-    const el = document.createElement("article");
+    const el =
+      document.createElement("article");
 
     el.className = "card";
 
     el.innerHTML = `
-      <div class="thumb">
-        <img src="${item.thumb}" alt="${escapeHtml(item.name)}">
-      </div>
+<div class="thumb">
+  <img
+    src="${item.thumb}"
+    alt="${escapeHtml(item.name)}"
+  >
+</div>
 
-      <div class="meta">
+<div class="meta">
 
-        <div class="meta-header">
-          <h3 class="title">${escapeHtml(item.name)}</h3>
-          <div class="badge">${type}</div>
-        </div>
+  <div class="meta-header">
 
-        <div class="rating">
-          ★ ${Number(item.rating).toFixed(1)}
-        </div>
+    <h3 class="title">
+      ${escapeHtml(item.name)}
+    </h3>
 
-        <div class="dates">
-          <div>
-            Start:
-            <strong>${formatDate(item.start)}</strong>
-          </div>
+    <div class="badge">
+      ${type}
+    </div>
 
-          <div>
-            End:
-            <strong>${formatDate(item.end)}</strong>
-          </div>
-        </div>
+  </div>
 
-        <button class="show-review">
-          Show Review
-        </button>
+  <div class="rating">
+    ★ ${Number(item.rating).toFixed(1)}
+  </div>
 
-        <div class="review">
-          ${escapeHtml(item.review || "No review yet.")}
-        </div>
+  <div class="dates">
 
-        <button class="share-btn">
-          <i class="fa-solid fa-share"></i>
-          Share
-        </button>
+    <div>
+      Start:
+      <strong>
+        ${formatDate(item.start)}
+      </strong>
+    </div>
 
-      </div>
-    `;
+    <div>
+      End:
+      <strong>
+        ${formatDate(item.end)}
+      </strong>
+    </div>
 
-    const btn = el.querySelector(".show-review");
+  </div>
 
-    const reviewDiv = el.querySelector(".review");
+  <button class="show-review">
+    Show Review
+  </button>
+
+  <div class="review">${escapeHtml(
+    item.review || "No review yet."
+  )}</div>
+
+  <button class="share-btn">
+    <i class="fa-solid fa-share"></i>
+    Share
+  </button>
+
+</div>
+`;
+
+    const btn =
+      el.querySelector(".show-review");
+
+    const reviewDiv =
+      el.querySelector(".review");
 
     btn.addEventListener("click", () => {
 
-      const open = reviewDiv.style.display === "block";
+      const open =
+        reviewDiv.classList.contains(
+          "active"
+        );
 
-      reviewDiv.style.display = open ? "none" : "block";
+      reviewDiv.classList.toggle(
+        "active"
+      );
 
       btn.textContent = open
         ? "Show Review"
         : "Hide Review";
     });
 
-    const thumbImg = el.querySelector(".thumb img");
+    const thumbImg =
+      el.querySelector(".thumb img");
 
-    thumbImg.addEventListener("click", () => {
+    thumbImg.addEventListener(
+      "click",
+      () => {
 
-      const lightbox = document.getElementById("lightbox");
+        const lightbox =
+          document.getElementById(
+            "lightbox"
+          );
 
-      const lightboxImg = lightbox.querySelector("img");
+        const lightboxImg =
+          lightbox.querySelector("img");
 
-      lightboxImg.src = item.thumb;
+        lightboxImg.src = item.thumb;
 
-      lightbox.classList.add("active");
-    });
+        lightbox.classList.add(
+          "active"
+        );
+      }
+    );
 
-    const shareBtn = el.querySelector(".share-btn");
+    const shareBtn =
+      el.querySelector(".share-btn");
 
-    shareBtn.addEventListener("click", () => {
+    shareBtn.addEventListener(
+      "click",
+      () => {
 
-      const url =
-        `${window.location.origin}${window.location.pathname}?${type.toLowerCase()}=${item.id}`;
+        const url =
+          `${window.location.origin}${window.location.pathname}?${type.toLowerCase()}=${item.id}`;
 
-      navigator.clipboard.writeText(url)
-        .then(() => {
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
 
-          if (typeof showToast === "function") {
-            showToast("Link copied successfully");
-          }
-        })
-        .catch(() => {
+            if (
+              typeof showToast ===
+              "function"
+            ) {
 
-          if (typeof showToast === "function") {
-            showToast("Failed to copy");
-          }
-        });
-    });
+              showToast(
+                "Link copied successfully"
+              );
+            }
+          })
+          .catch(() => {
+
+            if (
+              typeof showToast ===
+              "function"
+            ) {
+
+              showToast(
+                "Failed to copy"
+              );
+            }
+          });
+      }
+    );
 
     return el;
   }
@@ -145,32 +202,137 @@
   function updateCounts() {
 
     const bookCount =
-      document.getElementById("bookCount");
+      document.getElementById(
+        "bookCount"
+      );
 
     const animeCount =
-      document.getElementById("animeCount");
+      document.getElementById(
+        "animeCount"
+      );
 
     if (bookCount) {
-      bookCount.textContent = books.length;
+      bookCount.textContent =
+        books.length;
     }
 
     if (animeCount) {
-      animeCount.textContent = anime.length;
+      animeCount.textContent =
+        anime.length;
     }
   }
 
-  function renderList(containerId, items, type) {
+  function renderPagination(
+    container,
+    items,
+    type,
+    containerId
+  ) {
+
+    const totalPages =
+      Math.ceil(
+        items.length / pageSize
+      );
+
+    if (totalPages <= 1) return;
+
+    const pagination =
+      document.createElement("div");
+
+    pagination.className =
+      "pagination";
+
+    const prevBtn =
+      document.createElement("button");
+
+    prevBtn.textContent = "Prev";
+
+    prevBtn.style.display =
+      currentPage[containerId] === 1
+        ? "none"
+        : "inline-flex";
+
+    prevBtn.addEventListener(
+      "click",
+      () => {
+
+        if (
+          currentPage[containerId] > 1
+        ) {
+
+          currentPage[containerId]--;
+
+          renderList(
+            containerId,
+            items,
+            type
+          );
+        }
+      }
+    );
+
+    const nextBtn =
+      document.createElement("button");
+
+    nextBtn.textContent = "Next";
+
+    nextBtn.style.display =
+      currentPage[containerId] >=
+      totalPages
+        ? "none"
+        : "inline-flex";
+
+    nextBtn.addEventListener(
+      "click",
+      () => {
+
+        if (
+          currentPage[containerId] <
+          totalPages
+        ) {
+
+          currentPage[containerId]++;
+
+          renderList(
+            containerId,
+            items,
+            type
+          );
+        }
+      }
+    );
+
+    pagination.appendChild(prevBtn);
+
+    pagination.appendChild(nextBtn);
+
+    container.appendChild(
+      pagination
+    );
+  }
+
+  function renderList(
+    containerId,
+    items,
+    type
+  ) {
 
     const container =
-      document.getElementById(containerId);
+      document.getElementById(
+        containerId
+      );
 
     if (!container) return;
 
     container.innerHTML = "";
 
-    if (!items || items.length === 0) {
+    if (
+      !items ||
+      items.length === 0
+    ) {
 
-      const e = document.createElement("div");
+      const e =
+        document.createElement("div");
 
       e.className = "empty";
 
@@ -184,266 +346,210 @@
       return;
     }
 
-    const page = currentPage[containerId];
+    const page =
+      currentPage[containerId];
 
     const start =
       (page - 1) * pageSize;
 
-    const end = start + pageSize;
+    const end =
+      start + pageSize;
 
-    const reversed = [...items].reverse();
+    const reversed =
+      [...items].reverse();
 
     const pagedItems =
       reversed.slice(start, end);
 
-    const grid = document.createElement("div");
+    const grid =
+      document.createElement("div");
 
     grid.className = "grid";
 
     pagedItems.forEach(it => {
-      grid.appendChild(makeCard(it, type));
+
+      grid.appendChild(
+        makeCard(it, type)
+      );
     });
 
     container.appendChild(grid);
 
-    const controls =
-      document.createElement("div");
-
-    controls.className = "pagination";
-
-    const prevBtn =
-      document.createElement("button");
-
-    prevBtn.textContent = "Previous";
-
-    prevBtn.disabled = page === 1;
-
-    prevBtn.onclick = () => {
-
-      currentPage[containerId]--;
-
-      renderList(containerId, items, type);
-    };
-
-    const nextBtn =
-      document.createElement("button");
-
-    nextBtn.textContent = "Next";
-
-    nextBtn.disabled = end >= items.length;
-
-    nextBtn.onclick = () => {
-
-      currentPage[containerId]++;
-
-      renderList(containerId, items, type);
-    };
-
-    controls.appendChild(prevBtn);
-    controls.appendChild(nextBtn);
-
-    container.appendChild(controls);
+    renderPagination(
+      container,
+      items,
+      type,
+      containerId
+    );
 
     updateCounts();
   }
 
-  function activateTab(target) {
+  async function loadData() {
 
-    document.querySelectorAll(".tab")
-      .forEach(tab => {
+    try {
 
-        tab.classList.remove("active");
-
-        tab.setAttribute(
-          "aria-selected",
-          "false"
+      const booksRes =
+        await fetch(
+          "data/books.json"
         );
-      });
 
-    document.querySelectorAll(".panel")
-      .forEach(panel => {
+      const animeRes =
+        await fetch(
+          "data/anime.json"
+        );
 
-        panel.classList.remove("active");
-      });
+      books =
+        await booksRes.json();
 
-    const activeTab =
-      document.querySelector(
-        `.tab[data-tab="${target}"]`
+      anime =
+        await animeRes.json();
+
+      renderList(
+        "books",
+        books,
+        "Book"
       );
 
-    if (activeTab) {
-
-      activeTab.classList.add("active");
-
-      activeTab.setAttribute(
-        "aria-selected",
-        "true"
+      renderList(
+        "anime",
+        anime,
+        "Anime"
       );
-    }
 
-    const activePanel =
-      document.getElementById(target);
+    } catch (err) {
 
-    if (activePanel) {
-
-      activePanel.classList.add("active");
+      console.error(
+        "Failed to load data:",
+        err
+      );
     }
   }
 
   function setupTabs() {
 
-    document.querySelectorAll(".tab")
-      .forEach(tab => {
+    const tabs =
+      document.querySelectorAll(
+        ".tab"
+      );
 
-        tab.addEventListener("click", () => {
+    const searchInput =
+      document.getElementById(
+        "searchInput"
+      );
 
-          const target = tab.dataset.tab;
+    tabs.forEach(tab => {
 
-          activateTab(target);
+      tab.addEventListener(
+        "click",
+        () => {
 
-          const url =
-            new URL(window.location);
+          document
+            .querySelectorAll(".tab")
+            .forEach(t => {
+              t.classList.remove(
+                "active"
+              );
+            });
 
-          url.search = "";
+          document
+            .querySelectorAll(".panel")
+            .forEach(p => {
+              p.classList.remove(
+                "active"
+              );
+            });
 
-          window.history.replaceState(
-            {},
-            "",
-            url
+          tab.classList.add(
+            "active"
           );
 
-          const input =
-            document.getElementById("searchInput");
+          const target =
+            tab.dataset.tab;
 
-          if (input) {
-            input.value = "";
+          const panel =
+            document.getElementById(
+              target
+            );
+
+          if (panel) {
+            panel.classList.add(
+              "active"
+            );
           }
 
-          if (target === "books") {
-            renderList("books", books, "Book");
-          }
+          if (searchInput) {
 
-          if (target === "anime") {
-            renderList("anime", anime, "Anime");
+            searchInput.value = "";
+
+            currentPage.books = 1;
+            currentPage.anime = 1;
+
+            renderList(
+              "books",
+              books,
+              "Book"
+            );
+
+            renderList(
+              "anime",
+              anime,
+              "Anime"
+            );
           }
-        });
-      });
+        }
+      );
+    });
   }
 
   function setupSearch() {
 
     const input =
-      document.getElementById("searchInput");
+      document.getElementById(
+        "searchInput"
+      );
 
     if (!input) return;
 
-    input.addEventListener("input", function () {
+    input.addEventListener(
+      "input",
+      function () {
 
-      const filter =
-        this.value.toLowerCase().trim();
+        const query =
+          this.value
+            .toLowerCase()
+            .trim();
 
-      const activeTab =
-        document.querySelector(".tab.active")
-          ?.dataset.tab;
+        const filteredBooks =
+          books.filter(item =>
+            item.name
+              .toLowerCase()
+              .includes(query)
+          );
 
-      if (activeTab === "timeline") {
-        return;
-      }
+        const filteredAnime =
+          anime.filter(item =>
+            item.name
+              .toLowerCase()
+              .includes(query)
+          );
 
-      const items =
-        activeTab === "books"
-          ? books
-          : anime;
+        currentPage.books = 1;
+        currentPage.anime = 1;
 
-      const filtered = items.filter(it => {
-
-        return (
-          it.name.toLowerCase().includes(filter)
+        renderList(
+          "books",
+          filteredBooks,
+          "Book"
         );
-      });
 
-      currentPage[activeTab] = 1;
-
-      renderList(
-        activeTab,
-        filtered,
-        activeTab === "books"
-          ? "Book"
-          : "Anime"
-      );
-    });
-  }
-
-  function loadData() {
-
-    const params =
-      new URLSearchParams(window.location.search);
-
-    const bookId = params.get("book");
-
-    const animeId = params.get("anime");
-
-    fetch("data/books.json")
-      .then(res => res.json())
-      .then(data => {
-
-        books = data;
-
-        if (bookId) {
-
-          activateTab("books");
-
-          const single =
-            books.find(b => b.id == bookId);
-
-          renderList(
-            "books",
-            single ? [single] : [],
-            "Book"
-          );
-
-        } else {
-
-          renderList(
-            "books",
-            books,
-            "Book"
-          );
-        }
-
-        updateCounts();
-      });
-
-    fetch("data/anime.json")
-      .then(res => res.json())
-      .then(data => {
-
-        anime = data;
-
-        if (animeId) {
-
-          activateTab("anime");
-
-          const single =
-            anime.find(a => a.id == animeId);
-
-          renderList(
-            "anime",
-            single ? [single] : [],
-            "Anime"
-          );
-
-        } else {
-
-          renderList(
-            "anime",
-            anime,
-            "Anime"
-          );
-        }
-
-        updateCounts();
-      });
+        renderList(
+          "anime",
+          filteredAnime,
+          "Anime"
+        );
+      }
+    );
   }
 
   document.addEventListener(
@@ -457,23 +563,36 @@
       loadData();
 
       const lightbox =
-        document.getElementById("lightbox");
+        document.getElementById(
+          "lightbox"
+        );
 
       const closeBtn =
-        lightbox.querySelector(".close-btn");
+        lightbox.querySelector(
+          ".close-btn"
+        );
 
-      lightbox.addEventListener("click", (e) => {
+      lightbox.addEventListener(
+        "click",
+        (e) => {
 
-        if (e.target === lightbox) {
-
-          lightbox.classList.remove("active");
+          if (e.target === lightbox) {
+            lightbox.classList.remove(
+              "active"
+            );
+          }
         }
-      });
+      );
 
-      closeBtn.addEventListener("click", () => {
+      closeBtn.addEventListener(
+        "click",
+        () => {
 
-        lightbox.classList.remove("active");
-      });
+          lightbox.classList.remove(
+            "active"
+          );
+        }
+      );
     }
   );
 
