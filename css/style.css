@@ -381,17 +381,6 @@ html, body {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.matrix-icon {
-  width: 23px;
-  height: 23px;
-  filter: brightness(0) saturate(100%) invert(81%) sepia(15%) saturate(404%) hue-rotate(194deg) brightness(93%) contrast(94%);
-  transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.matrix-icon:hover {
-  filter: invert(80%) sepia(38%) saturate(515%) hue-rotate(96deg) brightness(96%) contrast(92%);
-}
-
 .social-icons a:hover {
   color: var(--accent);
   transform: translateY(-2px);
