@@ -29,9 +29,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
 </head>
 <body>
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search..."/>
+  <div class="topbar" role="banner">
+    <div class="topbar__inner">
+      <a href="/Shelf" class="topbar__brand" aria-label="Home">
+        <span class="topbar__brand-icon" aria-hidden="true">◈</span>
+        <span class="topbar__brand-name">riwnlmk<span class="topbar__brand-accent">.shelf</span></span>
+      </a>
+      <div class="search-wrap" role="search">
+        <i class="fa-solid fa-magnifying-glass search-wrap__icon" aria-hidden="true"></i>
+        <input
+          class="search-wrap__input"
+          type="search"
+          id="searchInput"
+          placeholder="Posts, Books, Anime"
+          aria-label="Search"
+          autocomplete="off"
+        />
+        <kbd class="search-wrap__kbd" aria-hidden="true">/</kbd>
+      </div>
+    </div>
   </div>
+
   <main class="container">
     <header class="profile-card">
       <div class="avatar-wrap">
