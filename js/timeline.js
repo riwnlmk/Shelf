@@ -1,6 +1,9 @@
 let posts = [];
 let filteredPosts = [];
 
+const PAGE_SIZE = 4;
+let currentPage = 1;
+
 async function loadPosts() {
   try {
     const res = await fetch("data/posts.json");
@@ -82,6 +85,8 @@ document
 
         filteredPosts = posts;
 
+        currentPage = 1;
+
         renderTimeline();
       }
     });
@@ -123,6 +128,8 @@ function setupTimelineSearch() {
       )
     );
 
+    currentPage = 1;
+
     renderTimeline();
   });
 }
@@ -160,10 +167,20 @@ function renderTimeline() {
     return;
   }
 
-  filteredPosts
-    .slice()
-    .reverse()
-    .forEach(post => {
+  const reversed = filteredPosts.slice().reverse();
+
+  const totalPages =
+    Math.ceil(reversed.length / PAGE_SIZE);
+
+  if (currentPage < 1) currentPage = 1;
+  if (currentPage > totalPages) currentPage = totalPages;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+
+  const pagePosts =
+    reversed.slice(start, start + PAGE_SIZE);
+
+  pagePosts.forEach(post => {
 
       const card =
         document.createElement("div");
@@ -409,6 +426,65 @@ function renderTimeline() {
     });
 
   Prism.highlightAll();
+
+  if (totalPages <= 1) return;
+
+  const pagination =
+    document.createElement("div");
+
+  pagination.className = "pagination";
+
+  const prevBtn =
+    document.createElement("button");
+
+  prevBtn.textContent = "Prev";
+
+  prevBtn.style.display =
+    currentPage === 1
+      ? "none"
+      : "inline-flex";
+
+  prevBtn.addEventListener(
+    "click",
+    () => {
+
+      if (currentPage > 1) {
+
+        currentPage--;
+
+        renderTimeline();
+      }
+    }
+  );
+
+  const nextBtn =
+    document.createElement("button");
+
+  nextBtn.textContent = "Next";
+
+  nextBtn.style.display =
+    currentPage >= totalPages
+      ? "none"
+      : "inline-flex";
+
+  nextBtn.addEventListener(
+    "click",
+    () => {
+
+      if (currentPage < totalPages) {
+
+        currentPage++;
+
+        renderTimeline();
+      }
+    }
+  );
+
+  pagination.appendChild(prevBtn);
+
+  pagination.appendChild(nextBtn);
+
+  timelinePanel.appendChild(pagination);
 }
 
 function copyCode(btn) {
