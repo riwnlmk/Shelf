@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "avatar": "assets/riwnlmk.png",
+    "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "26 September 2025",
     "blocks": [
@@ -13,7 +13,7 @@
   },
   {
     "id": 2,
-    "avatar": "assets/riwnlmk.png",
+    "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "12 February 2026",
     "blocks": [
@@ -34,7 +34,7 @@
   },
   {
     "id": 3,
-    "avatar": "assets/riwnlmk.png",
+    "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "01 May 2026",
     "blocks": [
@@ -68,7 +68,7 @@
   },
   {
     "id": 4,
-    "avatar": "assets/riwnlmk.png",
+    "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "15 May 2026",
     "blocks": [

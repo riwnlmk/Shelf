@@ -1,27 +1,32 @@
 # riwnlmk's Shelf
-riwnlmk's Shelf is a personal collection and showcase platform for books and anime, along with a timeline feature to track reading and watching progress. It is designed as a clean, minimal, and organized shelf for recording experiences, reviews, and memories.
+riwnlmk's Shelf is a personal library and showcase platform focused on books, anime, and progress tracking. The project is designed as a minimal and organized space for documenting reading and watching experiences, reviews, thoughts, and memories.
+
+## Overview
+The platform combines a clean shelf-style interface with a timeline system to help track completed and ongoing content. It serves as a personal archive rather than a public database.
 
 ## Features
-- **Books**
-  - A curated list of books with thumbnails, names, ratings, and reviews.  
-  - Each book entry can include a short personal review.
-- **Anime**
-  - A dedicated section to track anime watched. 
-  - Includes thumbnails, titles, ratings, and quick impressions.
 - **Timeline**
-  - A chronological record of reading and watching experiences. 
-  - Helps visualize progress across books and anime.
+  - Chronological activity tracking system.
+  - Visualize reading and watching progress over time.
+  - Maintain a personal history of completed content.
+- **Books**
+  - Display books with thumbnails, titles, ratings, and personal reviews.
+  - Organized card-based layout for better readability.
+  - Optional short impressions and notes for each entry.
+- **Anime**
+  - Track watched anime in a dedicated section.
+  - Store ratings, thumbnails, and quick reviews.
+  - Simple and structured viewing experience.
 
 ## Technology
-- Built with HTML & CSS for a clean and responsive layout.
-- Organized card-based design for Books and Anime.
-- JavaScript used for interactivity (like review toggle).
+- HTML for structure
+- CSS for styling and responsive design
+- JavaScript for interactivity and dynamic content loading
+- JSON-based data management system
 
-## Structure
+## Project Structure
 ```shell
-├── assets
-│   ├── riwnlmk.jpg
-│   └── riwnlmk.png
+├── assets/
 ├── css
 │   ├── all.min.css
 │   └── style.css
@@ -29,26 +34,22 @@ riwnlmk's Shelf is a personal collection and showcase platform for books and ani
 │   ├── anime.json
 │   ├── books.json
 │   └── posts.json
-├── favicon
-│   └── favicon.ico
+├── favicon/
 ├── index.html
 ├── js
 │   ├── dataLoader.js
 │   └── timeline.js
+├── LICENSE
+├── media/
+├── README.md
 ├── robots.txt
 ├── sitemap.xml
-├── thumbnail
-│   ├── anime
-│   └── books
-└── webfonts
-    ├── fa-brands-400.woff2
-    ├── fa-regular-400.woff2
-    ├── fa-solid-900.woff2
-    └── fa-v4compatibility.woff2
+├── thumbnail/
+└── webfonts/
 ```
 
 > [!NOTE]  
-> This project is mainly for personal tracking and exploration of reading and watching experiences. It’s not a public database but a curated personal shelf.
+> This project is primarily built for personal tracking, archiving, and exploration of books and anime. The content is curated personally and reflects individual experiences and preferences.
 
 ## Contributing
 Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.

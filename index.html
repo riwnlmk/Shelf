@@ -29,6 +29,13 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css">
 </head>
 <body>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb--teal"></div>
+    <div class="orb orb--blue"></div>
+    <div class="orb orb--purple"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
   <div class="topbar" role="banner">
     <div class="topbar__inner">
       <a href="/Shelf" class="topbar__brand" aria-label="Home">
@@ -50,155 +57,164 @@
     </div>
   </div>
 
-  <main class="container">
-    <header class="profile-card">
-      <div class="avatar-wrap">
-        <a href="/Shelf">
-          <img src="assets/riwnlmk.png" alt="Md. Ridwanul Islam Muntakim" class="avatar"/>
-        </a>
-      </div>
-
-      <div class="profile-info">
-        <div class="name-row">
-          <a href="/Shelf"><h1>riwnlmk</h1></a>
-          <span class="pill">Shelf</span>
+  <main class="layout" id="main-content">
+    <aside class="layout__sidebar" aria-label="Profile sidebar">
+      <article class="profile-card" aria-label="Profile">
+        <div class="profile-card__shimmer" aria-hidden="true"></div>
+        <div class="avatar-wrap" aria-hidden="true">
+          <div class="avatar-wrap__ring"></div>
+          <div class="avatar-wrap__ring-mask"></div>
+          <a href="/Shelf" class="avatar-wrap__link" tabindex="-1">
+            <div class="avatar-wrap__img">
+              <img
+                src="assets/images/riwnlmk.png"
+                alt="Md. Ridwanul Islam Muntakim"
+                loading="eager"
+                onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';"
+              />
+              <div class="avatar-wrap__fallback" id="avatarFallback" aria-hidden="true">rw</div>
+            </div>
+          </a>
+          <span class="avatar-wrap__status" title="Active" aria-label="Online status: active"></span>
         </div>
 
-        <p class="subtitle">
-          Moments captured through pages, screens and frames.
-        </p>
+        <div class="profile-info">
+          <div class="name-row">
+            <a href="/Shelf" class="profile-info__name" aria-label="riwnlmk homepage">
+              <span class="profile-info__name-mono">riwnlmk</span>
+            </a>
+            <span class="profile-badge" aria-label="Section: Shelf">
+              <span class="profile-badge__dot" aria-hidden="true"></span>
+              Shelf
+            </span>
+          </div>
 
-        <div class="social-icons">
-          <a href="https://github.com/riwnlmk" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="mailto:riwnlmk@gmail.com"><i class="fas fa-envelope"></i></a>
-          <a href="https://facebook.com/riwnlmk" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://t.me/riwnlmk" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+          <p class="profile-info__tagline">
+            Moments captured through<br class="br-md" />
+            pages, screens &amp; frames.
+          </p>
+
+          <nav class="social-icons" aria-label="Social links">
+            <a class="social-icons__link" href="https://github.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="GitHub" aria-label="GitHub profile">
+              <i class="fab fa-github" aria-hidden="true"></i>
+            </a>
+            <a class="social-icons__link" href="mailto:riwnlmk@gmail.com" data-tip="Email" aria-label="Send email">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </a>
+            <a class="social-icons__link" href="https://facebook.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Facebook" aria-label="Facebook profile">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
+            </a>
+            <a class="social-icons__link" href="https://t.me/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Telegram" aria-label="Telegram">
+              <i class="fab fa-telegram-plane" aria-hidden="true"></i>
+            </a>
+          </nav>
         </div>
-      </div>
-    </header>
 
-    <section class="skills-section">
-      <div class="skills-header">
-        <div class="skills-title">
-          <i class="fa-solid fa-code"></i>
-          <span>Skills</span>
+        <div class="profile-org">
+          <img
+            src="assets/icons/org/openaql.svg"
+            alt="OpenAQL"
+            class="profile-org__logo"
+          />
+          <span class="profile-org__text">
+            Developer at <strong>OpenAQL</strong>
+          </span>
         </div>
-      </div>
+      </article>
 
-      <div class="skills-group">
-        <h3>Languages</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <img src="assets/icon/languages/python.svg">
-            <span>Python</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/languages/javascript.svg">
-            <span>JavaScript</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/languages/go.svg">
-            <span>Go</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/languages/html.svg">
-            <span>HTML</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/languages/css.svg">
-            <span>CSS</span>
-          </div>
+      <section class="skills-card" aria-labelledby="skills-heading">
+        <div class="skills-card__header">
+          <h2 class="skills-card__title" id="skills-heading">
+            <i class="fa-solid fa-code" aria-hidden="true"></i>
+            Skills
+          </h2>
         </div>
-      </div>
 
-      <div class="skills-group">
-        <h3>Tools</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <img src="assets/icon/tools/linux.svg">
-            <span>Linux</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/tools/git.svg">
-            <span>Git</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/tools/docker.svg">
-            <span>Docker</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/tools/cloudflare.svg">
-            <span>Cloudflare</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/tools/heroku.svg">
-            <span>Heroku</span>
-          </div>
-
-          <div class="skill-card">
-            <img src="assets/icon/tools/hugo.svg">
-            <span>Hugo</span>
-          </div>
+        <div class="skills-group" role="group" aria-labelledby="lang-heading">
+          <h3 class="skills-group__label" id="lang-heading">Languages</h3>
+          <ul class="skills-grid" role="list">
+            <li class="skill-card" role="listitem"><img src="assets/icons/languages/python.svg" alt="Python" class="skill-card__icon" /><span class="skill-card__name">Python</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/languages/javascript.svg" alt="JavaScript" class="skill-card__icon" /><span class="skill-card__name">JavaScript</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/languages/go.svg" alt="Go" class="skill-card__icon" /><span class="skill-card__name">Go</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/languages/html.svg" alt="HTML" class="skill-card__icon" /><span class="skill-card__name">HTML</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/languages/css.svg" alt="CSS" class="skill-card__icon" /><span class="skill-card__name">CSS</span></li>
+          </ul>
         </div>
-      </div>
 
-      <div class="skills-group">
-        <h3>Interests</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>Cyber Security</span>
-          </div>
+        <div class="skills-group" role="group" aria-labelledby="tools-heading">
+          <h3 class="skills-group__label" id="tools-heading">Tools</h3>
+          <ul class="skills-grid" role="list">
+            <li class="skill-card" role="listitem"><img src="assets/icons/tools/linux.svg" alt="Linux" class="skill-card__icon" /><span class="skill-card__name">Linux</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/tools/git.svg" alt="Git" class="skill-card__icon" /><span class="skill-card__name">Git</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/tools/docker.svg" alt="Docker" class="skill-card__icon" /><span class="skill-card__name">Docker</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/tools/cloudflare.svg" alt="Cloudflare" class="skill-card__icon" /><span class="skill-card__name">Cloudflare</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/tools/heroku.svg" alt="Heroku" class="skill-card__icon" /><span class="skill-card__name">Heroku</span></li>
+            <li class="skill-card" role="listitem"><img src="assets/icons/tools/hugo.svg" alt="Hugo" class="skill-card__icon" /><span class="skill-card__name">Hugo</span></li>
+          </ul>
+        </div>
 
-          <div class="skill-card">
-            <i class="fa-solid fa-robot"></i>
-            <span>Automation</span>
-          </div>
+        <div class="skills-group" role="group" aria-labelledby="interests-heading">
+          <h3 class="skills-group__label" id="interests-heading">Interests</h3>
+          <ul class="skills-grid" role="list">
+            <li class="skill-card" role="listitem"><i class="fa-solid fa-shield-halved skill-card__icon-fa" aria-hidden="true"></i><span class="skill-card__name">Cyber Security</span></li>
+            <li class="skill-card" role="listitem"><i class="fa-solid fa-robot skill-card__icon-fa" aria-hidden="true"></i><span class="skill-card__name">Automation</span></li>
+            <li class="skill-card" role="listitem"><i class="fa-solid fa-code skill-card__icon-fa" aria-hidden="true"></i><span class="skill-card__name">Open Source</span></li>
+            <li class="skill-card" role="listitem"><i class="fa-solid fa-coins skill-card__icon-fa" aria-hidden="true"></i><span class="skill-card__name">Cryptocurrency</span></li>
+          </ul>
+        </div>
+      </section>
+    </aside>
 
-          <div class="skill-card">
-            <i class="fa-solid fa-code"></i>
-            <span>Open Source</span>
-          </div>
-
-          <div class="skill-card">
-            <i class="fa-solid fa-coins"></i>
-            <span>Cryptocurrency</span>
-          </div>
+    <section class="layout__main" aria-label="Content">
+      <div class="tabs" role="region" aria-label="Content tabs">
+        <nav class="tab-list" role="tablist" aria-label="Content sections">
+          <button
+            class="tab-list__btn tab active"
+            role="tab"
+            id="tab-timeline"
+            data-tab="timeline"
+            aria-selected="true"
+            aria-controls="timeline"
+          >
+            <i class="fa-brands fa-buffer tab-list__icon" aria-hidden="true"></i>
+            Timeline
+          </button>
+          <button
+            class="tab-list__btn tab"
+            role="tab"
+            id="tab-books"
+            data-tab="books"
+            aria-selected="false"
+            aria-controls="books"
+          >
+            <i class="fa-solid fa-book-open tab-list__icon" aria-hidden="true"></i>
+            Books
+            <span class="count-badge" id="bookCount" aria-live="polite">0</span>
+          </button>
+          <button
+            class="tab-list__btn tab"
+            role="tab"
+            id="tab-anime"
+            data-tab="anime"
+            aria-selected="false"
+            aria-controls="anime"
+          >
+            <i class="fa-solid fa-tv tab-list__icon" aria-hidden="true"></i>
+            Anime
+            <span class="count-badge" id="animeCount" aria-live="polite">0</span>
+          </button>
+        </nav>
+        <div class="tab-indicator" aria-hidden="true"></div>
+        <div class="tab-panels">
+          <div class="panel active" id="timeline" role="tabpanel" aria-labelledby="tab-timeline"></div>
+          <div class="panel" id="books" role="tabpanel" aria-labelledby="tab-books"></div>
+          <div class="panel" id="anime" role="tabpanel" aria-labelledby="tab-anime"></div>
         </div>
       </div>
     </section>
-
-    <section class="tabs">
-      <nav class="tab-list" role="tablist">
-        <button class="tab active" data-tab="timeline" aria-selected="true">
-          Timeline
-        </button>
-
-        <button class="tab" data-tab="books" aria-selected="false">
-          Books <span id="bookCount" class="count-badge">0</span>
-        </button>
-
-        <button class="tab" data-tab="anime" aria-selected="false">
-          Anime <span id="animeCount" class="count-badge">0</span>
-        </button>
-      </nav>
-
-      <div class="tab-panels">
-        <div id="timeline" class="panel active"></div>
-        <div id="books" class="panel"></div>
-        <div id="anime" class="panel"></div>
-      </div>
-    </section>
-    <div id="toast" class="toast"></div>
   </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
   <div id="lightbox">
     <span class="close-btn">&times;</span>
