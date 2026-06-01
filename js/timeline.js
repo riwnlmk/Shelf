@@ -1,7 +1,7 @@
 let posts = [];
 let filteredPosts = [];
 
-const PAGE_SIZE = 4;
+const PAGE_SIZE = 3;
 let currentPage = 1;
 
 async function loadPosts() {
