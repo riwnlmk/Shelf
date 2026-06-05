@@ -145,8 +145,18 @@ function formatTextBlock(text) {
   text = escapeHtml(text);
 
   text = text.replace(
+    /&quot;/g,
+    '"'
+  );
+
+  text = text.replace(
     /`([^`]+)`/g,
     '<code class="inline-code">$1</code>'
+  );
+
+  text = text.replace(
+    /&gt;&gt;([^]+?)&lt;&lt;/g,
+    '<blockquote class="post-quote">$1</blockquote>'
   );
 
   return text

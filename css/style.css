@@ -1401,6 +1401,17 @@ h1, h2, h3, h4 { line-height: 1.2; }
   transform: rotate(90deg) scale(1.1);
 }
 
+.post-quote {
+  margin: 12px 0;
+  padding: 12px 16px;
+  background: rgba(0, 212, 168, 0.04);
+  border-left: 3px solid #00d4a8;
+  border-radius: 0 6px 6px 0;
+  color: #dde8f5;
+  font-size: 0.95em;
+  line-height: 1.7;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
