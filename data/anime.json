@@ -534,5 +534,14 @@
       "rating": 5.0,
       "start": "2026-05-29",
       "end": "2026-05-29"
+    },
+    {
+      "id":68,
+      "name": "Black Torch",
+      "thumb": "thumbnail/anime/black_torch.jpeg",
+      "rating": 4.9,
+      "start": "2026-10-01",
+      "end": "2026-10-01",
+      "review": "Black Torch is a short but enjoyable anime with an interesting supernatural concept, ninjas, and exciting martial arts action. The fights are fast and visually satisfying, while Jiro is a fun protagonist with a different personality. However, the series feels rushed, and several characters and story elements needed more development. Overall, it leaves you wanting more."
     }
 ]
