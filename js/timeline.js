@@ -260,6 +260,18 @@ function renderTimeline() {
   <h3 class="event-title">${escapeHtml(post.title)}</h3>
 
   <span class="event-date">${escapeHtml(post.eventDate)}</span>
+
+  ${
+    post.eventLocation
+      ? `
+  <div class="event-location">
+    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+    <span>${escapeHtml(post.eventLocation)}</span>
+  </div>
+`
+      : ""
+  }
+
 </div>
 `;
         shortBodyHtml = fullBodyHtml;
@@ -461,6 +473,7 @@ function renderTimeline() {
       }
 
       timelinePanel.appendChild(card);
+
     });
 
   Prism.highlightAll();

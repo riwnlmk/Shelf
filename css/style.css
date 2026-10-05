@@ -1034,6 +1034,19 @@ h1, h2, h3, h4 { line-height: 1.2; }
   color: var(--muted);
 }
 
+.event-location {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.event-location i {
+  color: var(--accent-primary);
+}
+
 .post-image {
   text-align: center;
   margin: var(--sp-3) 0;
