@@ -1153,11 +1153,17 @@ h1, h2, h3, h4 { line-height: 1.2; }
 }
 
 .post-options-menu button {
-  background: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: calc(100% - 8px);
+  margin: 2px 4px;
+  padding: 9px 12px;
   border: none;
-  width: 100%;
+  border-radius: var(--r-sm);
+  background: none;
   text-align: left;
-  padding: 8px 14px;
   color: var(--text-secondary);
   font-size: 0.78rem;
   cursor: pointer;
