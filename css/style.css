@@ -1034,6 +1034,13 @@ h1, h2, h3, h4 { line-height: 1.2; }
   color: var(--muted);
 }
 
+.event-designation {
+  margin-top: var(--sp-1);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
 .event-location {
   display: inline-flex;
   align-items: center;

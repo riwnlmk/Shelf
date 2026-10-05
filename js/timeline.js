@@ -125,6 +125,8 @@ function setupTimelineSearch() {
         post.title,
         post.eventDate,
         post.eventCategory,
+        post.designation,
+        post.eventLocation,
         ...(post.blocks || []).flatMap(block => [
           block.content,
           block.code
@@ -260,6 +262,12 @@ function renderTimeline() {
   <h3 class="event-title">${escapeHtml(post.title)}</h3>
 
   <span class="event-date">${escapeHtml(post.eventDate)}</span>
+
+  ${
+    post.eventCategory === "Work" && post.designation
+      ? `<span class="event-designation">${escapeHtml(post.designation)}</span>`
+      : ""
+  }
 
   ${
     post.eventLocation
