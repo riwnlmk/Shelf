@@ -3,6 +3,18 @@
     "id": 1,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
+    "date": "27 January 2026",
+    "type": "event",
+    "title": "Started Job at OpenAQL",
+    "eventDate": "27 January 2026",
+    "eventCategory": "Work",
+    "designation": "Founder and CEO",
+    "eventIcon": "fa-briefcase"
+  },
+  {
+    "id": 2,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
     "date": "26 September 2025",
     "blocks": [
       {
@@ -12,7 +24,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": 3,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "01 May 2026",
@@ -46,7 +58,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 4,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "15 May 2026",
@@ -89,7 +101,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 5,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "01 June 2026",
@@ -128,7 +140,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 6,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "11 July 2026",
@@ -139,7 +151,7 @@
     "eventIcon": "fa-heart"
   },
   {
-    "id": 6,
+    "id": 7,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "09 August 2026",
