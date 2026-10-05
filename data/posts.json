@@ -137,5 +137,17 @@
     "eventDate": "11 July 2026",
     "eventCategory": "Relationship",
     "eventIcon": "fa-heart"
+  },
+  {
+    "id": 6,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "09 August 2026",
+    "type": "event",
+    "title": "OpenAQL Business Travel",
+    "eventDate": "09 August 2026",
+    "eventCategory": "Travel",
+    "eventIcon": "fa-train",
+    "eventLocation": "Dhaka, Bangladesh"
   }
 ]
