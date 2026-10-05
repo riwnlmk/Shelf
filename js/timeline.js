@@ -107,26 +107,35 @@ function setupTimelineSearch() {
       return;
     }
 
-    let filter = this.value
+    const filter = this.value
       .toLowerCase()
       .trim();
 
-    filteredPosts = posts.filter(post =>
-      post.blocks.some(block =>
-        (
-          block.type === "text" &&
-          block.content
-            .toLowerCase()
-            .includes(filter)
-        ) ||
-        (
-          block.type === "code" &&
+    if (!filter) {
+      filteredPosts = posts;
+      currentPage = 1;
+      renderTimeline();
+      return;
+    }
+
+    filteredPosts = posts.filter(post => {
+      const postText = [
+        post.user,
+        post.date,
+        post.title,
+        post.eventDate,
+        post.eventCategory,
+        ...(post.blocks || []).flatMap(block => [
+          block.content,
           block.code
-            .toLowerCase()
-            .includes(filter)
-        )
-      )
-    );
+        ])
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return postText.includes(filter);
+    });
 
     currentPage = 1;
 
@@ -237,6 +246,24 @@ function renderTimeline() {
 
       let fullBodyHtml = "";
       let shortBodyHtml = "";
+
+      if (post.type === "event") {
+        const eventIcon = post.eventIcon || "fa-heart";
+
+        fullBodyHtml = `
+<div class="event-card">
+  <div class="event-icon" aria-hidden="true">
+    <i class="fa-solid ${eventIcon} event-icon__main"></i>
+    <i class="fa-solid ${eventIcon} event-icon__small"></i>
+  </div>
+
+  <h3 class="event-title">${escapeHtml(post.title)}</h3>
+
+  <span class="event-date">${escapeHtml(post.eventDate)}</span>
+</div>
+`;
+        shortBodyHtml = fullBodyHtml;
+      } else {
 
       post.blocks.forEach(block => {
 
@@ -368,6 +395,7 @@ function renderTimeline() {
           }
         }
       });
+      }
 
       card.innerHTML =
         headerHtml +

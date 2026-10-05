@@ -977,6 +977,63 @@ h1, h2, h3, h4 { line-height: 1.2; }
 
 .post-content p { margin: 0; }
 
+.event-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--sp-6) var(--sp-4) var(--sp-4);
+}
+
+.event-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  margin-bottom: var(--sp-4);
+  color: var(--accent-primary);
+}
+
+.event-icon__main {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 6px 14px rgba(0, 212, 168, 0.18));
+}
+
+.event-icon__small {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
+  font-size: 1.35rem;
+  animation: eventIconFloat 1.8s var(--ease-out) infinite;
+}
+
+@keyframes eventIconFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(0, 5px) scale(0.75);
+  }
+  35% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.9;
+    transform: translate(8px, -10px) scale(1);
+  }
+}
+
+.event-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.event-date {
+  margin-top: var(--sp-1);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
 .post-image {
   text-align: center;
   margin: var(--sp-3) 0;
