@@ -52,10 +52,10 @@
   <main class="layout" id="main-content">
     <aside class="layout__sidebar" aria-label="Profile sidebar">
       <article class="profile-card" aria-label="Profile">
-        <div class="profile-card__shimmer" aria-hidden="true"></div>
+        <div class="profile-card__cover" aria-hidden="true">
+          <img src="assets/images/cover.jpg" alt="" loading="eager" />
+        </div>
         <div class="avatar-wrap" aria-hidden="true">
-          <div class="avatar-wrap__ring"></div>
-          <div class="avatar-wrap__ring-mask"></div>
           <a href="/Shelf" class="avatar-wrap__link" tabindex="-1">
             <div class="avatar-wrap__img">
               <img
@@ -72,40 +72,24 @@
         <div class="profile-info">
           <div class="name-row">
             <a href="/Shelf" class="profile-info__name" aria-label="riwnlmk homepage">
-              <span class="profile-info__name-mono">riwnlmk</span>
+              <span class="profile-info__name-full">Md. Ridwanul Islam Muntakim</span>
             </a>
           </div>
-
+          <a class="profile-info__username" href="https://github.com/riwnlmk">@riwnlmk</a>
           <p class="profile-info__tagline">
             Moments captured through<br class="br-md" />
             pages, screens and frames.
           </p>
-
           <nav class="social-icons" aria-label="Social links">
-            <a class="social-icons__link" href="https://github.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="GitHub" aria-label="GitHub profile">
-              <i class="fab fa-github" aria-hidden="true"></i>
-            </a>
-            <a class="social-icons__link" href="mailto:riwnlmk@gmail.com" data-tip="Email" aria-label="Send email">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-            </a>
-            <a class="social-icons__link" href="https://facebook.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Facebook" aria-label="Facebook profile">
-              <i class="fab fa-facebook-f" aria-hidden="true"></i>
-            </a>
-            <a class="social-icons__link" href="https://t.me/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Telegram" aria-label="Telegram">
-              <i class="fab fa-telegram-plane" aria-hidden="true"></i>
-            </a>
+            <a class="social-icons__link" href="https://github.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="GitHub" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+            <a class="social-icons__link" href="mailto:riwnlmk@gmail.com" data-tip="Email" aria-label="Send email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+            <a class="social-icons__link" href="https://facebook.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Facebook" aria-label="Facebook profile"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a class="social-icons__link" href="https://t.me/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Telegram" aria-label="Telegram"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
           </nav>
         </div>
-
         <div class="profile-org">
-          <img
-            src="assets/icons/org/openaql.svg"
-            alt="OpenAQL"
-            class="profile-org__logo"
-          />
-          <span class="profile-org__text">
-            Founder and CEO at <strong>OpenAQL</strong>
-          </span>
+          <img src="assets/icons/org/openaql.svg" alt="OpenAQL" class="profile-org__logo" />
+          <span class="profile-org__text">Founder and CEO at <strong>OpenAQL</strong></span>
         </div>
       </article>
 
