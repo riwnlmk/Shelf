@@ -15,6 +15,18 @@
     "id": 2,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
+    "date": "12 February 2026",
+    "type": "event",
+    "title": "First Voting Experience",
+    "eventDate": "12 February 2026",
+    "eventCategory": "Milestones",
+    "eventIcon": "fa-solid fa-check-to-slot",
+    "eventLocation": "Bangladesh"
+  },
+  {
+    "id": 3,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
     "date": "26 September 2025",
     "blocks": [
       {
@@ -24,7 +36,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 4,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "01 May 2026",
@@ -58,7 +70,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": 5,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "15 May 2026",
@@ -101,7 +113,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": 6,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "01 June 2026",
@@ -140,7 +152,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": 7,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "11 July 2026",
@@ -151,7 +163,7 @@
     "eventIcon": "fa-heart"
   },
   {
-    "id": 7,
+    "id": 8,
     "avatar": "assets/images/riwnlmk.png",
     "user": "Md. Ridwanul Islam Muntakim",
     "date": "09 August 2026",
