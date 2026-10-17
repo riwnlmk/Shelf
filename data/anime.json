@@ -169,8 +169,8 @@
     },
     {
       "id":22,
-      "name": "Blood Prison",
-      "thumb": "thumbnail/anime/naruto_shippuden_blood_prison.jpg",
+      "name": "Naruto the Movie: Blood Prison",
+      "thumb": "thumbnail/anime/naruto_the_movie_blood_prison.jpg",
       "rating": 1.4,
       "start": "2024-08-09",
       "end": "2024-08-09"
@@ -543,5 +543,16 @@
       "start": "2026-10-01",
       "end": "2026-10-01",
       "review": "Black Torch is a short but enjoyable anime with an interesting supernatural concept, ninjas, and exciting martial arts action. The fights are fast and visually satisfying, while Jiro is a fun protagonist with a different personality. However, the series feels rushed, and several characters and story elements needed more development. Overall, it leaves you wanting more."
+    },
+    {
+      "id":69,
+      "name": "Naruto: Shippuden",
+      "thumb": "thumbnail/anime/naruto_shippuden.jpg",
+      "start": "2026-10-01",
+      "progress": {
+        "current": 102,
+        "total": 500,
+        "date": "2026-10-17"
+      }
     }
 ]
