@@ -411,7 +411,6 @@ h1, h2, h3, h4 { line-height: 1.2; }
 }
 
 .profile-org:hover .profile-org__logo { opacity: 1; }
-.profile-org:hover .profile-org__text { color: var(--text-secondary); }
 
 .social-icons {
   display: flex;
