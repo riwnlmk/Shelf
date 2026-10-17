@@ -55,6 +55,40 @@
 
     el.className = "card";
 
+    const progress = item.progress;
+    const hasProgress =
+      progress &&
+      Number.isFinite(Number(progress.current)) &&
+      Number.isFinite(Number(progress.total)) &&
+      Number(progress.total) > 0 &&
+      Number(progress.current) >= 0;
+
+    const progressCurrent = hasProgress
+      ? Math.min(Number(progress.current), Number(progress.total))
+      : 0;
+    const progressTotal = hasProgress
+      ? Number(progress.total)
+      : 0;
+    const progressPercent = hasProgress
+      ? Math.min(100, Math.max(0, (progressCurrent / progressTotal) * 100))
+      : 0;
+    const progressUnit = type === "Book" ? "Pages" : "Episodes";
+    const progressIcon = type === "Book" ? "fa-book-open" : "fa-tv";
+    const progressDateLabel = type === "Book" ? "Last Read" : "Last Watched";
+    const progressMarkup = hasProgress ? `
+  <div class="item-progress" aria-label="${progressCurrent} of ${progressTotal} ${progressUnit}">
+    <div class="item-progress__details">
+      <i class="fa-solid ${progressIcon} item-progress__icon" aria-hidden="true"></i>
+      <span class="item-progress__count">${progressCurrent} / ${progressTotal} ${progressUnit}</span>
+    </div>
+    <div class="item-progress__track" role="progressbar"
+      aria-valuemin="0" aria-valuemax="${progressTotal}" aria-valuenow="${progressCurrent}"
+      aria-valuetext="${progressCurrent} of ${progressTotal} ${progressUnit}">
+      <div class="item-progress__bar" style="--progress-value: ${progressPercent}%"></div>
+    </div>
+    ${progress.date ? `<div class="item-progress__date"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i><span>${progressDateLabel} ${escapeHtml(formatDate(progress.date))}</span></div>` : ""}
+  </div>` : "";
+
     el.innerHTML = `
 <div class="thumb">
   <img
@@ -73,9 +107,9 @@
 
   </div>
 
-  <div class="rating">
-    ★ ${Number(item.rating).toFixed(1)}
-  </div>
+  ${hasProgress ? "" : `<div class="rating">★ ${Number(item.rating).toFixed(1)}</div>`}
+
+  ${progressMarkup}
 
   <div class="dates">
 
@@ -84,16 +118,16 @@
       <strong>${formatDate(item.start)}</strong>
     </div>
 
-    <div>
+    ${hasProgress ? "" : `<div>
       End:
       <strong>${formatDate(item.end)}</strong>
-    </div>
+    </div>`}
 
   </div>
 
-  <button class="show-review">
+  ${hasProgress ? "" : `<button class="show-review">
     Show Review
-  </button>
+  </button>`}
 
   <div class="review" style="display:none;">${escapeHtml(
     item.review || "No review yet."
@@ -113,22 +147,24 @@
     const reviewDiv =
       el.querySelector(".review");
 
-    btn.addEventListener(
-      "click",
-      () => {
+    if (btn) {
+      btn.addEventListener(
+        "click",
+        () => {
 
-        const open =
-          reviewDiv.style.display ===
-          "block";
+          const open =
+            reviewDiv.style.display ===
+            "block";
 
-        reviewDiv.style.display =
-          open ? "none" : "block";
+          reviewDiv.style.display =
+            open ? "none" : "block";
 
-        btn.textContent = open
-          ? "Show Review"
-          : "Hide Review";
-      }
-    );
+          btn.textContent = open
+            ? "Show Review"
+            : "Hide Review";
+        }
+      );
+    }
 
     const thumbImg =
       el.querySelector(".thumb img");
@@ -351,11 +387,12 @@
     const end =
       start + pageSize;
 
-    const reversed =
-      [...items].reverse();
+    const orderedItems = containerId === "anime"
+      ? [...items].sort((a, b) => Number(b.id) - Number(a.id))
+      : [...items].reverse();
 
     const pagedItems =
-      reversed.slice(start, end);
+      orderedItems.slice(start, end);
 
     const grid =
       document.createElement("div");
@@ -392,7 +429,8 @@
 
       const animeRes =
         await fetch(
-          "data/anime.json"
+          "data/anime.json",
+          { cache: "no-store" }
         );
 
       allBooks =
