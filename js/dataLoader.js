@@ -56,6 +56,7 @@
     el.className = "card";
 
     const progress = item.progress;
+    const hasReview = typeof item.review === "string" && item.review.trim().length > 0;
     const hasProgress =
       progress &&
       Number.isFinite(Number(progress.current)) &&
@@ -125,13 +126,10 @@
 
   </div>
 
-  ${hasProgress ? "" : `<button class="show-review">
+  ${!hasProgress && hasReview ? `<button class="show-review">
     Show Review
-  </button>`}
-
-  <div class="review" style="display:none;">${escapeHtml(
-    item.review || "No review yet."
-  )}</div>
+  </button>
+  <div class="review" style="display:none;">${escapeHtml(item.review.trim())}</div>` : ""}
 
   <button class="share-btn">
     <i class="fa-solid fa-share"></i>
