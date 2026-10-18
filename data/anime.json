@@ -554,5 +554,14 @@
         "total": 500,
         "date": "2026-10-18"
       }
+    },
+    {
+      "id":70,
+      "name": "Tomb Raider King",
+      "thumb": "thumbnail/anime/tomb_raider_king.jpeg",
+      "rating": 4.5,
+      "start": "2026-10-01",
+      "end": "2026-10-18",
+      "review": "Tomb Raider King is an entertaining anime featuring ancient relics, supernatural powers, treasure hunting, and strategic battles. Jooheon Suh stands out as an intelligent and ruthless protagonist who uses future knowledge to outsmart enemies. Although some parts feel repetitive and supporting characters need development, its unique concept, exciting action, and revenge story make it enjoyable."
     }
 ]
