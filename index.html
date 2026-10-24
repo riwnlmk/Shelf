@@ -178,7 +178,13 @@
         </nav>
         <div class="tab-indicator" aria-hidden="true"></div>
         <div class="tab-panels">
-          <div class="panel active" id="timeline" role="tabpanel" aria-labelledby="tab-timeline"></div>
+          <div class="panel active" id="timeline" role="tabpanel" aria-labelledby="tab-timeline">
+            <nav class="timeline-subtabs" role="tablist" aria-label="Timeline views">
+              <button class="timeline-subtab active" type="button" role="tab" aria-selected="true" data-timeline-view="posts">Posts</button>
+              <button class="timeline-subtab" type="button" role="tab" aria-selected="false" data-timeline-view="events">Events</button>
+            </nav>
+            <div id="timeline-content" role="tabpanel"></div>
+          </div>
           <div class="panel" id="books" role="tabpanel" aria-labelledby="tab-books"></div>
           <div class="panel" id="anime" role="tabpanel" aria-labelledby="tab-anime"></div>
         </div>

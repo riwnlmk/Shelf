@@ -1,21 +1,32 @@
 let posts = [];
 let filteredPosts = [];
+let events = [];
+let filteredEvents = [];
+let activeTimelineView = "posts";
 
 const PAGE_SIZE = 3;
 let currentPage = 1;
 
 async function loadPosts() {
   try {
-    const res = await fetch("data/posts.json");
+    const [postsResponse, eventsResponse] = await Promise.all([
+      fetch("data/posts.json"),
+      fetch("data/events.json")
+    ]);
 
-    posts = await res.json();
-    filteredPosts = posts;
+    posts = await postsResponse.json();
+    events = await eventsResponse.json();
+    filteredPosts = posts.filter(post => post.type !== "event");
+    filteredEvents = events;
 
-    const postId = new URLSearchParams(
-      window.location.search
-    ).get("post");
+    const queryParams = new URLSearchParams(window.location.search);
+    const postId = queryParams.get("post");
+    const eventId = queryParams.get("event");
+    const sharedId = eventId || postId;
 
-    if (postId) {
+    let sharedItem = null;
+
+    if (sharedId) {
       document
         .querySelectorAll(".tab")
         .forEach(t => t.classList.remove("active"));
@@ -32,18 +43,33 @@ async function loadPosts() {
         timelineTab.classList.add("active");
       }
 
-      const timelinePanel =
-        document.getElementById("timeline");
+      const timelinePanel = document.getElementById("timeline");
 
       if (timelinePanel) {
         timelinePanel.classList.add("active");
       }
 
-      const single = posts.find(
-        p => p.id == postId
-      );
+      if (eventId) {
+        sharedItem = events.find(item => String(item.id) === eventId);
+        activeTimelineView = "events";
+        filteredEvents = sharedItem ? [sharedItem] : [];
+      } else {
+        sharedItem = posts.find(
+          item => String(item.id) === postId && item.type !== "event"
+        );
+        activeTimelineView = "posts";
+        filteredPosts = sharedItem ? [sharedItem] : [];
+      }
+    }
 
-      filteredPosts = single ? [single] : [];
+    setupTimelineSubtabs();
+
+    if (sharedId && sharedItem) {
+      document.querySelectorAll(".timeline-subtab").forEach(button => {
+        const active = button.dataset.timelineView === activeTimelineView;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-selected", String(active));
+      });
     }
 
     renderTimeline();
@@ -83,10 +109,15 @@ document
           );
         }
 
-        filteredPosts = posts;
-
+        activeTimelineView = "posts";
+        filteredPosts = posts.filter(post => post.type !== "event");
+        filteredEvents = events;
+        document.querySelectorAll(".timeline-subtab").forEach(button => {
+          const active = button.dataset.timelineView === "posts";
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-selected", String(active));
+        });
         currentPage = 1;
-
         renderTimeline();
       }
     });
@@ -111,14 +142,20 @@ function setupTimelineSearch() {
       .toLowerCase()
       .trim();
 
+    const source = activeTimelineView === "events" ? events : posts.filter(post => post.type !== "event");
+
     if (!filter) {
-      filteredPosts = posts;
+      if (activeTimelineView === "events") {
+        filteredEvents = source;
+      } else {
+        filteredPosts = source;
+      }
       currentPage = 1;
       renderTimeline();
       return;
     }
 
-    filteredPosts = posts.filter(post => {
+    const filtered = source.filter(post => {
       const postText = [
         post.user,
         post.date,
@@ -139,9 +176,44 @@ function setupTimelineSearch() {
       return postText.includes(filter);
     });
 
-    currentPage = 1;
+    if (activeTimelineView === "events") {
+      filteredEvents = filtered;
+    } else {
+      filteredPosts = filtered;
+    }
 
+    currentPage = 1;
     renderTimeline();
+  });
+}
+
+function setupTimelineSubtabs() {
+  document.querySelectorAll(".timeline-subtab").forEach(button => {
+    button.addEventListener("click", () => {
+      activeTimelineView = button.dataset.timelineView;
+      document.querySelectorAll(".timeline-subtab").forEach(item => {
+        const active = item === button;
+        item.classList.toggle("active", active);
+        item.setAttribute("aria-selected", String(active));
+      });
+      const query = document.getElementById("searchInput")?.value.trim().toLowerCase() || "";
+      const source = activeTimelineView === "events" ? events : posts.filter(post => post.type !== "event");
+      const filtered = query ? source.filter(post => {
+        const postText = [
+          post.user, post.date, post.title, post.eventDate, post.eventCategory,
+          post.designation, post.eventLocation,
+          ...(post.blocks || []).flatMap(block => [block.content, block.code])
+        ].filter(Boolean).join(" ").toLowerCase();
+        return postText.includes(query);
+      }) : source;
+      if (activeTimelineView === "events") {
+        filteredEvents = filtered;
+      } else {
+        filteredPosts = filtered;
+      }
+      currentPage = 1;
+      renderTimeline();
+    });
   });
 }
 
@@ -176,19 +248,16 @@ function formatTextBlock(text) {
 }
 
 function renderTimeline() {
-  const timelinePanel =
-    document.getElementById("timeline");
-
+  const timelinePanel = document.getElementById("timeline-content");
+  const currentItems = activeTimelineView === "events" ? filteredEvents : filteredPosts;
   timelinePanel.innerHTML = "";
 
-  if (filteredPosts.length === 0) {
-    timelinePanel.innerHTML =
-      `<p class="empty">No posts found.</p>`;
-
+  if (currentItems.length === 0) {
+    timelinePanel.innerHTML = `<p class="empty">No ${activeTimelineView === "events" ? "events" : "posts"} found.</p>`;
     return;
   }
 
-  const reversed = filteredPosts.slice().reverse();
+  const reversed = currentItems.slice().reverse();
 
   const totalPages =
     Math.ceil(reversed.length / PAGE_SIZE);
@@ -232,7 +301,7 @@ function renderTimeline() {
     </button>
 
     <div class="post-options-menu">
-      <button onclick="sharePost('${post.id}')">
+      <button onclick="sharePost('${post.id}', '${post.type === "event" || activeTimelineView === "events" ? "event" : "post"}')">
         <i class="fa-solid fa-share"></i>
         Share
       </button>
@@ -602,10 +671,9 @@ document.addEventListener("click", (e) => {
   }
 });
 
-function sharePost(postId) {
-
-  const url =
-    `${window.location.origin}${window.location.pathname}?post=${postId}`;
+function sharePost(itemId, itemType = "post") {
+  const parameter = itemType === "event" ? "event" : "post";
+  const url = `${window.location.origin}${window.location.pathname}?${parameter}=${itemId}`;
 
   navigator.clipboard
     .writeText(url)

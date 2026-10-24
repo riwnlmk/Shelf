@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "27 January 2026",
+    "type": "event",
+    "title": "Started Job at OpenAQL",
+    "eventDate": "27 January 2026",
+    "eventCategory": "Work",
+    "designation": "Founder and CEO",
+    "eventIcon": "fa-briefcase"
+  },
+  {
+    "id": 2,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "12 February 2026",
+    "type": "event",
+    "title": "First Voting Experience",
+    "eventDate": "12 February 2026",
+    "eventCategory": "Milestones",
+    "eventIcon": "fa-solid fa-check-to-slot",
+    "eventLocation": "Bangladesh"
+  },
+  {
+    "id": 3,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "11 July 2026",
+    "type": "event",
+    "title": "Married to Ayesha Siddika",
+    "eventDate": "11 July 2026",
+    "eventCategory": "Relationship",
+    "eventIcon": "fa-heart"
+  },
+  {
+    "id": 4,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "09 August 2026",
+    "type": "event",
+    "title": "OpenAQL Business Travel",
+    "eventDate": "09 August 2026",
+    "eventCategory": "Travel",
+    "eventIcon": "fa-train",
+    "eventLocation": "Dhaka, Bangladesh"
+  }
+]
