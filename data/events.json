@@ -45,5 +45,18 @@
     "eventCategory": "Travel",
     "eventIcon": "fa-train",
     "eventLocation": "Dhaka, Bangladesh"
+  },
+  {
+    "id": 5,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "16 September 2026",
+    "type": "event",
+    "title": "Started Our Own Household",
+    "eventDate": "16 September 2026",
+    "eventCategory": "Life Milestones",
+    "eventIcon": "fa-solid fa-house",
+    "eventLocation": "Bangladesh",
+    "eventWith": "Ayesha Siddika"
   }
 ]
