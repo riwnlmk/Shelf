@@ -164,6 +164,7 @@ function setupTimelineSearch() {
         post.eventCategory,
         post.designation,
         post.eventLocation,
+        post.eventWith,
         ...(post.blocks || []).flatMap(block => [
           block.content,
           block.code
@@ -201,7 +202,7 @@ function setupTimelineSubtabs() {
       const filtered = query ? source.filter(post => {
         const postText = [
           post.user, post.date, post.title, post.eventDate, post.eventCategory,
-          post.designation, post.eventLocation,
+          post.designation, post.eventLocation, post.eventWith,
           ...(post.blocks || []).flatMap(block => [block.content, block.code])
         ].filter(Boolean).join(" ").toLowerCase();
         return postText.includes(query);
@@ -344,6 +345,17 @@ function renderTimeline() {
   <div class="event-location">
     <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
     <span>${escapeHtml(post.eventLocation)}</span>
+  </div>
+`
+      : ""
+  }
+
+  ${
+    post.eventWith
+      ? `
+  <div class="event-with">
+    <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+    <span>With ${escapeHtml(post.eventWith)}</span>
   </div>
 `
       : ""
