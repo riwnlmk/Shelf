@@ -992,33 +992,63 @@ h1, h2, h3, h4 { line-height: 1.2; }
   width: 74px;
   height: 74px;
   margin-bottom: var(--sp-4);
-  color: var(--accent-primary);
+  border: 5px solid var(--bg-surface);
+  border-radius: 50%;
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 0 0 2px var(--accent-primary), 0 6px 18px color-mix(in srgb, var(--accent-primary) 28%, transparent);
+  animation: eventIconPulse 2.2s ease-in-out infinite;
 }
 
 .event-icon__main {
-  font-size: 3.5rem;
-  filter: drop-shadow(0 6px 14px rgba(0, 212, 168, 0.18));
+  font-size: 2.25rem;
+  color: #fff;
+  animation: eventIconPop 2.2s ease-in-out infinite;
 }
 
 .event-icon__small {
   position: absolute;
-  right: 2px;
-  bottom: 4px;
-  font-size: 1.35rem;
-  animation: eventIconFloat 1.8s var(--ease-out) infinite;
+  right: -7px;
+  bottom: 1px;
+  font-size: 1.15rem;
+  color: var(--accent-primary);
+  filter: drop-shadow(0 1px 2px color-mix(in srgb, var(--accent-primary) 35%, transparent));
+  animation: eventIconFloat 2.2s ease-out infinite;
+}
+
+@keyframes eventIconPulse {
+  0%, 100% { transform: scale(1); }
+  18% { transform: scale(1.08); }
+  36% { transform: scale(1); }
+  54% { transform: scale(1.04); }
+  72% { transform: scale(1); }
+}
+
+@keyframes eventIconPop {
+  0%, 100% { transform: scale(1); }
+  18% { transform: scale(1.12); }
+  36% { transform: scale(1); }
+  54% { transform: scale(1.06); }
+  72% { transform: scale(1); }
 }
 
 @keyframes eventIconFloat {
   0%, 100% {
     opacity: 0;
-    transform: translate(0, 5px) scale(0.75);
+    transform: translate(0, 5px) scale(0.65) rotate(-10deg);
   }
-  35% {
-    opacity: 1;
+  28% { opacity: 1; }
+  76% {
+    opacity: 0.95;
+    transform: translate(9px, -15px) scale(1) rotate(8deg);
   }
-  75% {
-    opacity: 0.9;
-    transform: translate(8px, -10px) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-icon,
+  .event-icon__main,
+  .event-icon__small {
+    animation: none;
   }
 }
 
