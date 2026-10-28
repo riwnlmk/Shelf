@@ -32,7 +32,7 @@
   <div class="topbar" role="banner">
     <div class="topbar__inner">
       <a href="/Shelf" class="topbar__brand" aria-label="Home">
-        <span class="topbar__brand-name">riwnlmk<span class="topbar__brand-accent">.shelf</span></span>
+        <span class="topbar__brand-name">riwnlmk's<span class="topbar__brand-accent">.shelf</span></span>
       </a>
       <div class="search-wrap" role="search">
         <i class="fa-solid fa-magnifying-glass search-wrap__icon" aria-hidden="true"></i>
@@ -75,21 +75,13 @@
               <span class="profile-info__name-full">Md. Ridwanul Islam Muntakim</span>
             </a>
           </div>
-          <a class="profile-info__username" href="/Shelf">@riwnlmk</a>
-          <p class="profile-info__tagline">
-            Moments captured through<br class="br-md" />
-            pages, screens and frames.
-          </p>
+          <p class="profile-info__tagline">Extends beyond the depth of roots.</p>
           <nav class="social-icons" aria-label="Social links">
             <a class="social-icons__link" href="https://github.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="GitHub" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
             <a class="social-icons__link" href="mailto:riwnlmk@gmail.com" data-tip="Email" aria-label="Send email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
             <a class="social-icons__link" href="https://facebook.com/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Facebook" aria-label="Facebook profile"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
             <a class="social-icons__link" href="https://t.me/riwnlmk" target="_blank" rel="noopener noreferrer" data-tip="Telegram" aria-label="Telegram"><i class="fab fa-telegram-plane" aria-hidden="true"></i></a>
           </nav>
-        </div>
-        <div class="profile-org">
-          <img src="assets/icons/org/openaql.svg" alt="OpenAQL" class="profile-org__logo" />
-          <span class="profile-org__text">Founder and CEO at <strong>OpenAQL</strong></span>
         </div>
       </article>
 
@@ -143,13 +135,13 @@
           <button
             class="tab-list__btn tab active"
             role="tab"
-            id="tab-timeline"
-            data-tab="timeline"
+            id="tab-knowledge"
+            data-tab="knowledge"
             aria-selected="true"
-            aria-controls="timeline"
+            aria-controls="knowledge"
           >
-            <i class="fa-brands fa-buffer tab-list__icon" aria-hidden="true"></i>
-            Timeline
+            <i class="fa-solid fa-brain tab-list__icon" aria-hidden="true"></i>
+            Knowledge
           </button>
           <button
             class="tab-list__btn tab"
@@ -161,7 +153,6 @@
           >
             <i class="fa-solid fa-book-open tab-list__icon" aria-hidden="true"></i>
             Books
-            <span class="count-badge" id="bookCount" aria-live="polite">0</span>
           </button>
           <button
             class="tab-list__btn tab"
@@ -173,18 +164,34 @@
           >
             <i class="fa-solid fa-tv tab-list__icon" aria-hidden="true"></i>
             Anime
-            <span class="count-badge" id="animeCount" aria-live="polite">0</span>
+          </button>
+          <button
+            class="tab-list__btn tab"
+            role="tab"
+            id="tab-events"
+            data-tab="events"
+            aria-selected="false"
+            aria-controls="events"
+          >
+            <i class="fa-solid fa-calendar-days tab-list__icon" aria-hidden="true"></i>
+            Events
           </button>
         </nav>
         <div class="tab-indicator" aria-hidden="true"></div>
         <div class="tab-panels">
-          <div class="panel active" id="timeline" role="tabpanel" aria-labelledby="tab-timeline">
-            <nav class="timeline-subtabs" role="tablist" aria-label="Timeline views">
-              <button class="timeline-subtab active" type="button" role="tab" aria-selected="true" data-timeline-view="posts">Posts</button>
-              <button class="timeline-subtab" type="button" role="tab" aria-selected="false" data-timeline-view="events">Events</button>
+          <div class="panel active" id="knowledge" role="tabpanel" aria-labelledby="tab-knowledge">
+            <nav class="timeline-subtabs" role="tablist" aria-label="Knowledge categories">
+              <button class="timeline-subtab active" type="button" role="tab" aria-selected="true" data-timeline-view="technology"><i class="fa-solid fa-microchip" aria-hidden="true"></i> Technology</button>
+              <button class="timeline-subtab" type="button" role="tab" aria-selected="false" data-timeline-view="ruqyah"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Ruqyah</button>
+            </nav>
+            <nav class="ruqyah-subtabs" id="ruqyah-subtabs" role="tablist" aria-label="Ruqyah content" hidden>
+              <button class="ruqyah-subtab active" type="button" role="tab" aria-selected="true" data-ruqyah-view="ayat"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Guides</button>
+              <button class="ruqyah-subtab" type="button" role="tab" aria-selected="false" data-ruqyah-view="audio"><i class="fa-solid fa-headphones" aria-hidden="true"></i> Recitations</button>
             </nav>
             <div id="timeline-content" role="tabpanel"></div>
+            <div id="ruqyah-audio-content" role="tabpanel" hidden></div>
           </div>
+          <div class="panel" id="events" role="tabpanel" aria-labelledby="tab-events"><div id="events-content" role="tabpanel"></div></div>
           <div class="panel" id="books" role="tabpanel" aria-labelledby="tab-books"></div>
           <div class="panel" id="anime" role="tabpanel" aria-labelledby="tab-anime"></div>
         </div>
@@ -200,7 +207,7 @@
   </div>
 
   <script src="js/dataLoader.js"></script>
-  <script src="js/timeline.js"></script>
+  <script src="js/knowledge.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-core.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>

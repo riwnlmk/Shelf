@@ -229,29 +229,6 @@
     return el;
   }
 
-  function updateCounts() {
-
-    const bookCount =
-      document.getElementById(
-        "bookCount"
-      );
-
-    const animeCount =
-      document.getElementById(
-        "animeCount"
-      );
-
-    if (bookCount) {
-      bookCount.textContent =
-        allBooks.length;
-    }
-
-    if (animeCount) {
-      animeCount.textContent =
-        allAnime.length;
-    }
-  }
-
   function renderPagination(
     container,
     items,
@@ -371,8 +348,6 @@
 
       container.appendChild(e);
 
-      updateCounts();
-
       return;
     }
 
@@ -413,7 +388,6 @@
       containerId
     );
 
-    updateCounts();
   }
 
   async function loadData() {
