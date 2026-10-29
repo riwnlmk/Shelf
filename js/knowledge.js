@@ -489,7 +489,12 @@ function formatTextBlock(text) {
   );
 
   text = text.replace(
-    /&gt;&gt;([^]+?)&lt;&lt;/g,
+    /\[\[quote\]\]([\s\S]*?)\[\[\/quote\]\]/gi,
+    '<blockquote class="post-quote">$1</blockquote>'
+  );
+
+  text = text.replace(
+    /&gt;&gt;([\s\S]+?)&lt;&lt;/g,
     '<blockquote class="post-quote">$1</blockquote>'
   );
 
