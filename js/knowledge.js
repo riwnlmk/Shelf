@@ -1,4 +1,4 @@
-let knowledgeItems = { technology: [], ruqyah: [] };
+let knowledgeItems = { technology: [], psychology: [], ruqyah: [] };
 let filteredPosts = [];
 let events = [];
 let filteredEvents = [];
@@ -13,14 +13,16 @@ let currentPage = 1;
 
 async function loadPosts() {
   try {
-    const [technologyResponse, ruqyahResponse, eventsResponse, ruqyahAudioResponse] = await Promise.all([
+    const [technologyResponse, psychologyResponse, ruqyahResponse, eventsResponse, ruqyahAudioResponse] = await Promise.all([
       fetch("data/technology.json"),
+      fetch("data/psychology.json"),
       fetch("data/ruqyah.json"),
       fetch("data/events.json"),
       fetch("data/ruqyah-audio.json")
     ]);
 
     knowledgeItems.technology = await technologyResponse.json();
+    knowledgeItems.psychology = await psychologyResponse.json();
     knowledgeItems.ruqyah = await ruqyahResponse.json();
     events = await eventsResponse.json();
     ruqyahAudioItems = await ruqyahAudioResponse.json();
@@ -123,8 +125,8 @@ document
       if (activeTab === "knowledge" || activeTab === "events") {
         const url = new URL(window.location);
 
-        if (["post", "tech", "technology", "event", "recitation"].some(key => url.searchParams.has(key))) {
-          ["post", "tech", "technology", "event", "recitation"].forEach(key => url.searchParams.delete(key));
+        if (["post", "tech", "technology", "psychology", "event", "recitation"].some(key => url.searchParams.has(key))) {
+          ["post", "tech", "technology", "psychology", "event", "recitation"].forEach(key => url.searchParams.delete(key));
           sharedRecitationId = null;
 
           window.history.replaceState(
@@ -925,7 +927,7 @@ document.addEventListener("click", event => {
 });
 
 function sharePost(itemId, itemType = "technology") {
-  const parameter = ["technology", "ruqyah", "event"].includes(itemType)
+  const parameter = ["technology", "psychology", "ruqyah", "event"].includes(itemType)
     ? itemType
     : "technology";
   const url = `${window.location.origin}${window.location.pathname}?${parameter}=${itemId}`;

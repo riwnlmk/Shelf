@@ -140,7 +140,7 @@
             aria-selected="true"
             aria-controls="knowledge"
           >
-            <i class="fa-solid fa-brain tab-list__icon" aria-hidden="true"></i>
+            <i class="fa-solid fa-lightbulb tab-list__icon" aria-hidden="true"></i>
             Knowledge
           </button>
           <button
@@ -182,10 +182,11 @@
           <div class="panel active" id="knowledge" role="tabpanel" aria-labelledby="tab-knowledge">
             <nav class="timeline-subtabs" role="tablist" aria-label="Knowledge categories">
               <button class="timeline-subtab active" type="button" role="tab" aria-selected="true" data-timeline-view="technology"><i class="fa-solid fa-microchip" aria-hidden="true"></i> Technology</button>
+              <button class="timeline-subtab" type="button" role="tab" aria-selected="false" data-timeline-view="psychology"><i class="fa-solid fa-brain" aria-hidden="true"></i> Psychology</button>
               <button class="timeline-subtab" type="button" role="tab" aria-selected="false" data-timeline-view="ruqyah"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Ruqyah</button>
             </nav>
             <nav class="ruqyah-subtabs" id="ruqyah-subtabs" role="tablist" aria-label="Ruqyah content" hidden>
-              <button class="ruqyah-subtab active" type="button" role="tab" aria-selected="true" data-ruqyah-view="ayat"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Guides</button>
+              <button class="ruqyah-subtab active" type="button" role="tab" aria-selected="true" data-ruqyah-view="ayat"><i class="fa-solid fa-map" aria-hidden="true"></i> Guides</button>
               <button class="ruqyah-subtab" type="button" role="tab" aria-selected="false" data-ruqyah-view="audio"><i class="fa-solid fa-headphones" aria-hidden="true"></i> Recitations</button>
             </nav>
             <div id="timeline-content" role="tabpanel"></div>

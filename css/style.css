@@ -963,8 +963,8 @@ h4 { line-height: 1.2; }
 
 .event-designation {
   margin-top: var(--sp-1);
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 400;
   color: var(--text-secondary);
 }
 
