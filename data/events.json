@@ -58,5 +58,18 @@
     "eventIcon": "fa-solid fa-house",
     "eventLocation": "Bangladesh",
     "eventWith": "Ayesha Siddika"
+  },
+  {
+    "id": 6,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "02 November 2026",
+    "type": "event",
+    "title": "Family Getaway",
+    "eventDate": "02 November 2026",
+    "eventCategory": "Travel",
+    "eventIcon": "fa-train",
+    "eventLocation": "Gazipur, Bangladesh",
+    "eventWith": "Ayesha Siddika"
   }
 ]
