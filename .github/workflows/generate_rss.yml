@@ -1,0 +1,42 @@
+name: Generate riwnlmk's Shelf RSS feeds
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'data/technology.json'
+      - 'data/psychology.json'
+      - 'script/generate_rss.py'
+      - '.github/workflows/generate_rss.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Generate riwnlmk's Shelf RSS feeds
+        run: python script/generate_rss.py
+
+      - name: Commit updated feeds
+        run: |
+          if [[ -n "$(git status --porcelain feeds/)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add feeds/technology.xml feeds/psychology.xml
+            git commit -m "Update RSS feeds"
+            git push
+          else
+            echo "RSS feeds are already up to date."
+          fi
