@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>riwnlmk's Shelf | Psychology</title>
+    <link>https://riwnlmk.github.io/Shelf/</link>
+    <description>New posts from the Psychology section of riwnlmk's Shelf.</description>
+    <language>bn-BD</language>
+    <lastBuildDate>Fri, 13 Nov 2026 16:01:22 +0000</lastBuildDate>
+    <atom:link href="https://riwnlmk.github.io/Shelf/feeds/psychology.xml" rel="self" type="application/rss+xml" />
+    <generator>riwnlmk Shelf RSS Generator</generator>
+  </channel>
+</rss>
