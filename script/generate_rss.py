@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Author: Md. Ridwanul Islam Muntakim
+# Email Address: riwnlmk@gmail.com
+
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from html import escape
