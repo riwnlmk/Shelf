@@ -9,16 +9,13 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://riwnlmk.github.io/Shelf"
-FEEDS = {
-    "technology": {
-        "title": "riwnlmk's Shelf | Technology",
-        "description": "New posts from the Technology section of riwnlmk's Shelf.",
-    },
-    "psychology": {
-        "title": "riwnlmk's Shelf | Psychology",
-        "description": "New posts from the Psychology section of riwnlmk's Shelf.",
-    },
+CATEGORIES = {
+    "technology": "Technology",
+    "psychology": "Psychology",
+    "ruqyah": "Ruqyah Guides",
 }
+FEED_TITLE = "riwnlmk's Shelf"
+FEED_DESCRIPTION = "New posts from the Technology, Psychology, and Ruqyah Guides sections of riwnlmk's Shelf."
 CONTENT_NS = "http://purl.org/rss/1.0/modules/content/"
 ATOM_NS = "http://www.w3.org/2005/Atom"
 ET.register_namespace("content", CONTENT_NS)
@@ -77,43 +74,44 @@ def add_text(parent, tag, value):
     element.text = value
     return element
 
-def build_feed(category, settings):
-    source = ROOT / "data" / f"{category}.json"
-    posts = json.loads(source.read_text(encoding="utf-8"))
-    posts = sorted(posts, key=lambda post: (parse_date(post.get("date")), str(post.get("id", ""))), reverse=True)
+def build_feed():
+    posts = []
+    for category, category_title in CATEGORIES.items():
+        source = ROOT / "data" / f"{category}.json"
+        for post in json.loads(source.read_text(encoding="utf-8")):
+            posts.append((parse_date(post.get("date")), category, category_title, post))
+    posts.sort(key=lambda entry: (entry[0], str(entry[3].get("id", ""))), reverse=True)
 
     rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
-    add_text(channel, "title", settings["title"])
+    add_text(channel, "title", FEED_TITLE)
     add_text(channel, "link", f"{BASE_URL}/")
-    add_text(channel, "description", settings["description"])
+    add_text(channel, "description", FEED_DESCRIPTION)
     add_text(channel, "language", "bn-BD")
     add_text(channel, "lastBuildDate", format_datetime(datetime.now(timezone.utc)))
-    ET.SubElement(channel, f"{{{ATOM_NS}}}link", {"href": f"{BASE_URL}/feeds/{category}.xml", "rel": "self", "type": "application/rss+xml"})
+    ET.SubElement(channel, f"{{{ATOM_NS}}}link", {
+        "href": f"{BASE_URL}/rss.xml", "rel": "self", "type": "application/rss+xml"
+    })
     add_text(channel, "generator", "riwnlmk Shelf RSS Generator")
 
-    for post in posts:
+    for published, category, category_title, post in posts:
         item = ET.SubElement(channel, "item")
-        title = post.get("title") or f"{settings['title']} — Post {post.get('id', '')}"
+        title = post.get("title") or f"{category_title} — Post {post.get('id', '')}"
         url = f"{BASE_URL}/?{category}={post.get('id', '')}"
         summary = plain_text(post.get("blocks", []))
         add_text(item, "title", title)
         add_text(item, "link", url)
         add_text(item, "guid", url).set("isPermaLink", "true")
-        add_text(item, "pubDate", format_datetime(parse_date(post.get("date"))))
+        add_text(item, "pubDate", format_datetime(published))
+        add_text(item, "category", category_title)
         add_text(item, "description", summary[:500] + ("…" if len(summary) > 500 else ""))
         add_text(item, f"{{{CONTENT_NS}}}encoded", render_content(post.get("blocks", [])))
         add_text(item, "author", post.get("user", "riwnlmk"))
 
-    output = ROOT / "feeds" / f"{category}.xml"
-    output.parent.mkdir(parents=True, exist_ok=True)
+    output = ROOT / "rss.xml"
     ET.indent(rss, space="  ")
     ET.ElementTree(rss).write(output, encoding="utf-8", xml_declaration=True)
     print(f"Generated {output.relative_to(ROOT)} ({len(posts)} items)")
 
-def main():
-    for category, settings in FEEDS.items():
-        build_feed(category, settings)
-
 if __name__ == "__main__":
-    main()
+    build_feed()
