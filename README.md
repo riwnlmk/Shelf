@@ -132,50 +132,49 @@ The profile and skills content is defined in `index.html`; presentation and resp
 | --- | --- |
 | HTML5 | Page structure and content sections |
 | CSS3 | Styling, layout, responsive design, and animations |
-| Vanilla JavaScript | Data loading, rendering, search, pagination, sharing, and media controls |
-| JSON | Content storage for posts, books, anime, events, and recitations |
-| Python 3 | RSS feed generation |
-| GitHub Actions | Automatic RSS feed generation and commit |
+| Vanilla JavaScript | Data loading, rendering, search, pagination, sharing, and audio playback |
+| JSON | Content storage for knowledge posts, books, anime, events, and Ruqyah recitations |
+| Python 3 | RSS feed and llms.txt generation using the standard library |
+| XML (RSS 2.0) | Publishing a combined RSS feed for Knowledge posts |
+| Markdown (llms.txt) | Structured website and content information for AI systems and language models |
+| GitHub Actions | Automated RSS feed and llms.txt generation, updates, and commits |
 | GitHub Pages | Static website hosting |
 | Prism.js | Syntax highlighting for code blocks |
 | Font Awesome | Interface icons |
 
-There is no frontend framework, package manager, database, or server-side application required by the website.
+There is no frontend framework, package manager, database, or server-side application required by the website. Both content generators use Python's standard library without requiring external dependencies.
 
 ## Project structure
 ```text
 .
+├── assets
+├── favicon
+├── css
+│   ├── all.min.css
+│   └── style.css
+├── data
+│   ├── anime.json
+│   ├── books.json
+│   ├── events.json
+│   ├── psychology.json
+│   ├── ruqyah-audio.json
+│   ├── ruqyah.json
+│   └── technology.json
 ├── index.html
-├── robots.txt
-├── sitemap.xml
-├── rss.xml
+├── js
+│   ├── dataLoader.js
+│   └── knowledge.js
+├── LICENSE
 ├── llms.txt
-├── css/
-│   ├── style.css
-│   └── all.min.css
-├── js/
-│   ├── dataLoader.js
-│   └── knowledge.js
-├── data/
-│   ├── technology.json
-│   ├── psychology.json
-│   ├── ruqyah.json
-│   ├── ruqyah-audio.json
-│   ├── events.json
-│   ├── books.json
-│   └── anime.json
-├── script/
-│   └── generate_rss.py
-├── .github/
-│   └── workflows/
-│       └── generate_rss.yml
-├── assets/
-│   ├── images/
-│   └── icons/
-├── favicon/
-└── thumbnail/
-    ├── books/
-    └── anime/
+├── media
+├── README.md
+├── robots.txt
+├── rss.xml
+├── scripts
+│   ├── generate_llms.py
+│   └── generate_rss.py
+├── sitemap.xml
+└── thumbnail
 ```
 
 The `assets/`, `favicon/`, and `thumbnail/` directories contain image and icon resources referenced by the page and JSON data. Keep those paths and filenames consistent when adding or replacing files.
