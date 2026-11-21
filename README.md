@@ -278,6 +278,53 @@ Python 3 is required. The script uses only Python's standard library. It writes 
 
 The GitHub Actions workflow requires repository permission to write contents so it can commit an updated feed. The workflow is configured for the `master` branch; update the branch in `.github/workflows/generate_rss.yml` if the repository uses a different default branch.
 
+## llms.txt Generation
+The project includes an automated `llms.txt` generator that creates a structured Markdown index of the website's published content. This file helps AI systems and language models discover the website, understand its content structure, and access individual entries through direct links.
+
+### Included Information
+The generated `llms.txt` contains:
+
+- **Website information:** Website name, description, author, website URL, RSS feed, and sitemap.
+- **Knowledge:** Technology, Psychology, and Ruqyah Guides, with links to individual posts and short excerpts from their text content.
+- **Ruqyah Recitations:** Recitation titles, descriptions, and direct links.
+- **Books:** Book titles, individual links, reading dates, ratings, and available reviews.
+- **Anime:** Anime titles, individual links, watching dates, ratings, and available reviews.
+- **Events:** Event titles, individual links, dates, categories, and available locations.
+
+### Generator
+The generator is located at:
+
+```text
+scripts/generate_llms.py
+```
+
+It reads the website's JSON data files from the `data/` directory and writes the generated `llms.txt` file to the project root.
+
+To run it manually from the project root:
+
+```bash
+python scripts/generate_llms.py
+```
+
+The script uses Python's standard library and does not require external Python packages.
+
+### GitHub Actions Automation
+The workflow is located at:
+
+```text
+.github/workflows/generate_llms.yml
+```
+
+It automatically runs when JSON files in `data/`, the generator script, or the workflow file are changed on the `master` branch. It also supports manual execution through GitHub Actions using `workflow_dispatch`.
+
+After generation, the workflow checks whether `llms.txt` has changed. If it has, the workflow commits and pushes the updated file to the repository.
+
+### Access
+The generated file is publicly available at:
+
+https://riwnlmk.github.io/Shelf/llms.txt
+
+
 ## Deployment
 The project is suitable for GitHub Pages because it is a static website.
 
