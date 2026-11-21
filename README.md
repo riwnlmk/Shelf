@@ -91,7 +91,7 @@ Feed items are sorted by publication date, newest first. Each item includes its 
 
 The generator is `scripts/generate_rss.py`. It reads `data/technology.json` and `data/psychology.json`, then writes `rss.xml` to the project root.
 
-The GitHub Actions workflow at `.github/workflows/generate_rss.yml` runs when a JSON file in `data/` or the RSS generator/workflow changes on the `master` branch. It also supports manual execution through `workflow_dispatch`. If the generated feed changes, the workflow commits and pushes the updated `rss.xml`.
+The GitHub Actions workflow at `.github/workflows/generate_content.yml` runs when a file in `data/` or either content generator/workflow changes on the `master` branch. It also supports manual execution through `workflow_dispatch`. The workflow generates both `rss.xml` and `llms.txt`, then commits and pushes the updated files together.
 
 ### 8. llms.txt
 
@@ -107,7 +107,7 @@ The generated file includes:
 
 The generator is `scripts/generate_llms.py`. It reads the website's JSON files from `data/` and writes `llms.txt` to the project root.
 
-The GitHub Actions workflow at `.github/workflows/generate_llms.yml` runs when JSON data, the generator, or the workflow changes on the `master` branch. It also supports manual execution through `workflow_dispatch`. If the generated file changes, the workflow commits and pushes the updated `llms.txt`.
+The combined workflow at `.github/workflows/generate_content.yml` also generates `llms.txt` whenever relevant data or generator files change. Both generated files are committed together to avoid competing pushes from separate workflows.
 
 **Generated file:** [llms.txt](https://riwnlmk.github.io/Shelf/llms.txt)
 
@@ -278,7 +278,7 @@ python scripts/generate_rss.py
 
 The script uses Python 3's standard library and writes the generated feed to `rss.xml`.
 
-The RSS workflow needs permission to write repository contents. The workflow currently targets the `master` branch; if the repository uses another default branch, update the branch name in `.github/workflows/generate_rss.yml`.
+The content-generation workflow needs permission to write repository contents. It currently targets the `master` branch; if the repository uses another default branch, update the branch name in `.github/workflows/generate_content.yml`.
 
 ## Generating llms.txt manually
 
@@ -290,7 +290,7 @@ python scripts/generate_llms.py
 
 The script uses Python 3's standard library and writes the generated index to `llms.txt`.
 
-The llms.txt workflow also needs permission to write repository contents. Its branch configuration is in `.github/workflows/generate_llms.yml`.
+The same content-generation workflow handles both RSS and llms.txt updates, so only one workflow needs write permission.
 
 ## Deployment
 
