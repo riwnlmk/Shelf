@@ -8,7 +8,7 @@ on:
       - 'data/technology.json'
       - 'data/psychology.json'
       - 'data/ruqyah.json'
-      - 'script/generate_rss.py'
+      - 'scripts/generate_rss.py'
       - '.github/workflows/generate_rss.yml'
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ jobs:
           python-version: '3.x'
 
       - name: Generate riwnlmk's Shelf RSS feed
-        run: python script/generate_rss.py
+        run: python scripts/generate_rss.py
 
       - name: Commit updated feed
         run: |
