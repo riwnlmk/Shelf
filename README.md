@@ -111,7 +111,7 @@ The website provides a combined RSS 2.0 feed:
 
 The feed includes posts from Technology, Psychology, and Ruqyah Guides. Items are sorted by publication date, newest first. Each item includes its title, direct link, publication date, category, author, and formatted content.
 
-The feed generator is `script/generate_rss.py`. It reads the category JSON files and creates `rss.xml` in the website root. It supports text, inline code, blockquotes, code blocks, and images in feed content.
+The feed generator is `scripts/generate_rss.py`. It reads the category JSON files and creates `rss.xml` in the website root. It supports text, inline code, blockquotes, code blocks, and images in feed content.
 
 A GitHub Actions workflow at `.github/workflows/generate_rss.yml` regenerates and commits the feed when the relevant data files or generator change on the `master` branch. It can also be run manually with `workflow_dispatch`.
 
@@ -149,6 +149,7 @@ There is no frontend framework, package manager, database, or server-side applic
 ├── robots.txt
 ├── sitemap.xml
 ├── rss.xml
+├── llms.txt
 ├── css/
 │   ├── style.css
 │   └── all.min.css
@@ -271,7 +272,7 @@ Audio entries are stored in `data/ruqyah-audio.json`. Each entry can provide an 
 To generate the feed manually, run this command from the project root:
 
 ```bash
-python script/generate_rss.py
+python scripts/generate_rss.py
 ```
 
 Python 3 is required. The script uses only Python's standard library. It writes the generated feed to `rss.xml`.
@@ -334,7 +335,7 @@ The project is suitable for GitHub Pages because it is a static website.
 4. Ensure the referenced assets, JSON files, and generated `rss.xml` are included in the published directory.
 5. Enable the GitHub Actions workflow and allow it to write repository contents so it can update `rss.xml`.
 
-The RSS generator currently uses the public base URL `https://riwnlmk.github.io/Shelf`. If the site is moved to another domain or repository path, update `BASE_URL` in `script/generate_rss.py` and the corresponding site metadata and sitemap URLs.
+The RSS generator currently uses the public base URL `https://riwnlmk.github.io/Shelf`. If the site is moved to another domain or repository path, update `BASE_URL` in `scripts/generate_rss.py` and the corresponding site metadata and sitemap URLs.
 
 ## Contributing
 Contributions, issues, and feature requests are welcome! Feel free to fork the repository and submit a pull request.
