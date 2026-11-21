@@ -1,51 +1,31 @@
-let knowledgeItems = { technology: [], psychology: [], ruqyah: [] };
+let knowledgeItems = { technology: [], psychology: [] };
 let filteredPosts = [];
 let events = [];
 let filteredEvents = [];
 let activeTimelineView = "technology";
-let activeRuqyahView = "ayat";
-let ruqyahAudioItems = [];
-let filteredRuqyahAudioItems = [];
-let sharedRecitationId = null;
 
 const PAGE_SIZE = 3;
 let currentPage = 1;
 
 async function loadPosts() {
   try {
-    const [technologyResponse, psychologyResponse, ruqyahResponse, eventsResponse, ruqyahAudioResponse] = await Promise.all([
+    const [technologyResponse, psychologyResponse, eventsResponse] = await Promise.all([
       fetch("data/technology.json"),
       fetch("data/psychology.json"),
-      fetch("data/ruqyah.json"),
-      fetch("data/events.json"),
-      fetch("data/ruqyah-audio.json")
+      fetch("data/events.json")
     ]);
 
     knowledgeItems.technology = await technologyResponse.json();
     knowledgeItems.psychology = await psychologyResponse.json();
-    knowledgeItems.ruqyah = await ruqyahResponse.json();
     events = await eventsResponse.json();
-    ruqyahAudioItems = await ruqyahAudioResponse.json();
-    filteredRuqyahAudioItems = ruqyahAudioItems;
     filteredPosts = knowledgeItems.technology;
     filteredEvents = events;
 
     const queryParams = new URLSearchParams(window.location.search);
     const eventId = queryParams.get("event");
-    const recitationId = queryParams.get("recitation");
-    sharedRecitationId = recitationId;
-    filteredRuqyahAudioItems = recitationId
-      ? ruqyahAudioItems.filter(item => String(item.id) === String(recitationId))
-      : ruqyahAudioItems;
     const categoryParam = Object.keys(knowledgeItems).find(key => queryParams.has(key));
     const categoryId = categoryParam ? queryParams.get(categoryParam) : null;
     const sharedId = eventId || categoryId;
-
-    if (recitationId) {
-      activeTimelineView = "ruqyah";
-      activeRuqyahView = "audio";
-      filteredPosts = knowledgeItems.ruqyah;
-    }
 
     let sharedItem = null;
 
@@ -78,21 +58,10 @@ async function loadPosts() {
     }
 
     setupTimelineSubtabs();
-    setupRuqyahSubtabs();
-    const ruqyahTabs = document.getElementById("ruqyah-subtabs");
-    if (ruqyahTabs) ruqyahTabs.hidden = activeTimelineView !== "ruqyah";
 
-    if ((sharedId && sharedItem) || recitationId) {
+    if (sharedId && sharedItem) {
       document.querySelectorAll(".timeline-subtab").forEach(button => {
         const active = button.dataset.timelineView === activeTimelineView;
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-selected", String(active));
-      });
-    }
-
-    if (recitationId) {
-      document.querySelectorAll(".ruqyah-subtab").forEach(button => {
-        const active = button.dataset.ruqyahView === "audio";
         button.classList.toggle("active", active);
         button.setAttribute("aria-selected", String(active));
       });
@@ -125,9 +94,8 @@ document
       if (activeTab === "knowledge" || activeTab === "events") {
         const url = new URL(window.location);
 
-        if (["post", "tech", "technology", "psychology", "event", "recitation"].some(key => url.searchParams.has(key))) {
-          ["post", "tech", "technology", "psychology", "event", "recitation"].forEach(key => url.searchParams.delete(key));
-          sharedRecitationId = null;
+        if (["post", "tech", "technology", "psychology", "event"].some(key => url.searchParams.has(key))) {
+          ["post", "tech", "technology", "psychology", "event"].forEach(key => url.searchParams.delete(key));
 
           window.history.replaceState(
             {},
@@ -168,18 +136,6 @@ function setupTimelineSearch() {
     const filter = this.value
       .toLowerCase()
       .trim();
-
-    if (activeTimelineView === "ruqyah" && activeRuqyahView === "audio") {
-      const audioSource = sharedRecitationId
-        ? ruqyahAudioItems.filter(item => String(item.id) === String(sharedRecitationId))
-        : ruqyahAudioItems;
-      filteredRuqyahAudioItems = filter
-        ? audioSource.filter(item => [item.title, item.description].filter(Boolean).join(" ").toLowerCase().includes(filter))
-        : audioSource;
-      currentPage = 1;
-      renderTimeline();
-      return;
-    }
 
     const source = activeTimelineView === "events" ? events : knowledgeItems[activeTimelineView] || [];
 
@@ -231,17 +187,6 @@ function setupTimelineSubtabs() {
   document.querySelectorAll(".timeline-subtab").forEach(button => {
     button.addEventListener("click", () => {
       activeTimelineView = button.dataset.timelineView;
-      if (activeTimelineView === "ruqyah") {
-        filteredPosts = knowledgeItems.ruqyah;
-        activeRuqyahView = "ayat";
-        document.querySelectorAll(".ruqyah-subtab").forEach(item => {
-          const active = item.dataset.ruqyahView === "ayat";
-          item.classList.toggle("active", active);
-          item.setAttribute("aria-selected", String(active));
-        });
-      }
-      const ruqyahTabs = document.getElementById("ruqyah-subtabs");
-      if (ruqyahTabs) ruqyahTabs.hidden = activeTimelineView !== "ruqyah";
       document.querySelectorAll(".timeline-subtab").forEach(item => {
         const active = item === button;
         item.classList.toggle("active", active);
@@ -266,208 +211,6 @@ function setupTimelineSubtabs() {
       renderTimeline();
     });
   });
-}
-
-function setupRuqyahSubtabs() {
-  document.querySelectorAll(".ruqyah-subtab").forEach(button => {
-    button.addEventListener("click", () => {
-      activeRuqyahView = button.dataset.ruqyahView;
-      if (activeRuqyahView !== "audio") {
-        const query = document.getElementById("searchInput")?.value.trim().toLowerCase() || "";
-        filteredPosts = query
-          ? knowledgeItems.ruqyah.filter(post => [post.user, post.date, post.title, ...(post.blocks || []).flatMap(block => [block.content, block.code])].filter(Boolean).join(" ").toLowerCase().includes(query))
-          : knowledgeItems.ruqyah;
-        const url = new URL(window.location.href);
-        url.searchParams.delete("recitation");
-        window.history.replaceState({}, "", url);
-        sharedRecitationId = null;
-      } else {
-        const query = document.getElementById("searchInput")?.value.trim().toLowerCase() || "";
-        const audioSource = sharedRecitationId
-          ? ruqyahAudioItems.filter(item => String(item.id) === String(sharedRecitationId))
-          : ruqyahAudioItems;
-        filteredRuqyahAudioItems = query
-          ? audioSource.filter(item => [item.title, item.description].filter(Boolean).join(" ").toLowerCase().includes(query))
-          : audioSource;
-      }
-      document.querySelectorAll(".ruqyah-subtab").forEach(item => {
-        const active = item === button;
-        item.classList.toggle("active", active);
-        item.setAttribute("aria-selected", String(active));
-      });
-      currentPage = 1;
-      renderTimeline();
-    });
-  });
-}
-
-function renderRuqyahAudio() {
-  const panel = document.getElementById("ruqyah-audio-content");
-  if (!panel) return;
-  panel.innerHTML = "";
-  const visibleAudioItems = filteredRuqyahAudioItems;
-  if (!visibleAudioItems.length) {
-    panel.innerHTML = '<p class="empty">No audio found.</p>';
-    return;
-  }
-
-  const totalPages = Math.ceil(visibleAudioItems.length / PAGE_SIZE);
-  if (currentPage < 1) currentPage = 1;
-  if (currentPage > totalPages) currentPage = totalPages;
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const pageAudioItems = visibleAudioItems.slice(start, start + PAGE_SIZE);
-
-  const waveformHeights = [7, 10, 13, 8, 17, 24, 13, 20, 29, 17, 12, 22, 31, 18, 12, 25, 16, 9, 20, 12, 7, 15, 10, 6, 12, 8, 5, 10, 7, 4];
-
-  pageAudioItems.forEach(item => {
-    const card = document.createElement("article");
-    card.className = "post-card ruqyah-audio-card";
-
-    const header = document.createElement("div");
-    header.className = "post-header ruqyah-audio-card__header";
-
-    const artwork = document.createElement("img");
-    artwork.className = "post-avatar ruqyah-audio-card__artwork";
-    artwork.src = "assets/icons/book/quran.svg";
-    artwork.alt = "Quran";
-    artwork.loading = "lazy";
-
-    const content = document.createElement("div");
-    content.className = "post-userinfo ruqyah-audio-card__content";
-
-    const title = document.createElement("span");
-    title.className = "post-username ruqyah-audio-card__title";
-    title.textContent = item.title || "Ruqyah Audio";
-    content.appendChild(title);
-
-    if (item.description) {
-      const description = document.createElement("span");
-      description.className = "post-date ruqyah-audio-card__description";
-      description.textContent = item.description;
-      content.appendChild(description);
-    }
-
-    const options = document.createElement("div");
-    options.className = "post-options ruqyah-audio-card__options";
-
-    const menuButton = document.createElement("button");
-    menuButton.className = "post-options-btn";
-    menuButton.type = "button";
-    menuButton.setAttribute("aria-label", "Audio options");
-    menuButton.innerHTML = '<i class="fa-solid fa-ellipsis-vertical"></i>';
-
-    const menu = document.createElement("div");
-    menu.className = "post-options-menu";
-    const shareButton = document.createElement("button");
-    shareButton.type = "button";
-    shareButton.innerHTML = '<i class="fa-solid fa-share"></i> Share';
-    shareButton.addEventListener("click", event => {
-      event.preventDefault();
-      event.stopPropagation();
-      shareRecitation(item.id);
-    });
-    menu.appendChild(shareButton);
-    options.append(menuButton, menu);
-    header.append(artwork, content, options);
-
-    const controls = document.createElement("div");
-    controls.className = "ruqyah-audio-card__controls";
-
-    const playButton = document.createElement("button");
-    playButton.className = "ruqyah-audio-card__play";
-    playButton.type = "button";
-    playButton.setAttribute("aria-label", `Play ${item.title || "Ruqyah audio"}`);
-    playButton.innerHTML = '<i class="fa-solid fa-play"></i>';
-
-    const trackArea = document.createElement("div");
-    trackArea.className = "ruqyah-audio-card__track-area";
-
-    const waveform = document.createElement("button");
-    waveform.className = "ruqyah-audio-card__waveform";
-    waveform.type = "button";
-    waveform.setAttribute("aria-label", "Seek audio position");
-    waveform.innerHTML = waveformHeights.map((height, barIndex) =>
-      `<span class="ruqyah-audio-card__bar" style="height:${height}px" data-bar="${barIndex}"></span>`
-    ).join("");
-
-    const timeRow = document.createElement("div");
-    timeRow.className = "ruqyah-audio-card__times";
-    const currentTime = document.createElement("span");
-    currentTime.textContent = "0:00";
-    const duration = document.createElement("span");
-    duration.textContent = "0:00";
-    timeRow.append(currentTime, duration);
-    trackArea.append(waveform, timeRow);
-    controls.append(playButton, trackArea);
-
-    const player = document.createElement("audio");
-    player.preload = "none";
-    player.src = item.src;
-    player.setAttribute("aria-label", item.title || "Ruqyah audio player");
-
-    const formatTime = seconds => {
-      if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
-      return `${mins}:${secs}`;
-    };
-
-    const updateProgress = () => {
-      currentTime.textContent = formatTime(player.currentTime);
-      if (Number.isFinite(player.duration)) duration.textContent = formatTime(player.duration);
-      const progress = player.duration ? player.currentTime / player.duration : 0;
-      waveform.querySelectorAll(".ruqyah-audio-card__bar").forEach((bar, barIndex) => {
-        bar.classList.toggle("is-played", barIndex / waveformHeights.length < progress);
-      });
-    };
-
-    const togglePlayback = () => {
-      if (player.paused) {
-        document.querySelectorAll("#ruqyah-audio-content audio").forEach(otherPlayer => {
-          if (otherPlayer !== player) {
-            otherPlayer.pause();
-            const otherCard = otherPlayer.closest(".ruqyah-audio-card");
-            const otherButton = otherCard?.querySelector(".ruqyah-audio-card__play");
-            if (otherButton) {
-              otherButton.innerHTML = '<i class="fa-solid fa-play"></i>';
-              otherButton.setAttribute("aria-label", `Play ${otherPlayer.getAttribute("aria-label")}`);
-              otherCard.classList.remove("is-playing");
-            }
-          }
-        });
-        player.play().catch(() => {});
-      } else {
-        player.pause();
-      }
-    };
-
-    playButton.addEventListener("click", togglePlayback);
-    waveform.addEventListener("click", event => {
-      if (!Number.isFinite(player.duration) || player.duration <= 0) return;
-      const bounds = waveform.getBoundingClientRect();
-      const ratio = Math.max(0, Math.min(1, (event.clientX - bounds.left) / bounds.width));
-      player.currentTime = ratio * player.duration;
-      updateProgress();
-    });
-    player.addEventListener("play", () => {
-      playButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
-      playButton.setAttribute("aria-label", `Pause ${item.title || "Ruqyah audio"}`);
-      card.classList.add("is-playing");
-    });
-    player.addEventListener("pause", () => {
-      playButton.innerHTML = '<i class="fa-solid fa-play"></i>';
-      playButton.setAttribute("aria-label", `Play ${item.title || "Ruqyah audio"}`);
-      card.classList.remove("is-playing");
-    });
-    player.addEventListener("loadedmetadata", updateProgress);
-    player.addEventListener("timeupdate", updateProgress);
-    player.addEventListener("ended", updateProgress);
-
-    card.append(header, controls, player);
-    panel.appendChild(card);
-  });
-
-  renderPagination(panel, totalPages);
 }
 
 function escapeHtml(text) {
@@ -513,16 +256,6 @@ function getReadTime(post) {
 }
 
 function renderTimeline() {
-  const ruqyahTabs = document.getElementById("ruqyah-subtabs");
-  if (ruqyahTabs) ruqyahTabs.hidden = activeTimelineView !== "ruqyah";
-  const ayatPanel = document.getElementById("timeline-content");
-  const audioPanel = document.getElementById("ruqyah-audio-content");
-  if (ayatPanel) ayatPanel.hidden = activeTimelineView === "ruqyah" && activeRuqyahView === "audio";
-  if (audioPanel) audioPanel.hidden = activeTimelineView !== "ruqyah" || activeRuqyahView !== "audio";
-  if (activeTimelineView === "ruqyah" && activeRuqyahView === "audio") {
-    renderRuqyahAudio();
-    return;
-  }
   const timelinePanel = document.getElementById(activeTimelineView === "events" ? "events-content" : "timeline-content");
   const currentItems = activeTimelineView === "events" ? filteredEvents : filteredPosts;
   timelinePanel.innerHTML = "";
@@ -927,7 +660,7 @@ document.addEventListener("click", event => {
 });
 
 function sharePost(itemId, itemType = "technology") {
-  const parameter = ["technology", "psychology", "ruqyah", "event"].includes(itemType)
+  const parameter = ["technology", "psychology", "event"].includes(itemType)
     ? itemType
     : "technology";
   const url = `${window.location.origin}${window.location.pathname}?${parameter}=${itemId}`;
@@ -947,38 +680,6 @@ function sharePost(itemId, itemType = "technology") {
         err
       );
     });
-}
-
-
-async function shareRecitation(itemId) {
-  const url = new URL(window.location.href);
-  url.search = "";
-  url.searchParams.set("recitation", itemId);
-  const link = url.toString();
-
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(link);
-    } else {
-      const field = document.createElement("textarea");
-      field.value = link;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      const copied = document.execCommand("copy");
-      field.remove();
-      if (!copied) throw new Error("Copy command failed");
-    }
-    document.querySelectorAll(".post-options-menu").forEach(menu => {
-      menu.style.display = "none";
-    });
-    showToast("Link copied successfully");
-  } catch (error) {
-    console.error("Failed to copy recitation link:", error);
-    showToast("Unable to copy link");
-  }
 }
 
 function showToast(message) {

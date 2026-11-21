@@ -5,9 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'data/technology.json'
-      - 'data/psychology.json'
-      - 'data/ruqyah.json'
+      - 'data/**'
       - 'scripts/generate_rss.py'
       - '.github/workflows/generate_rss.yml'
   workflow_dispatch:

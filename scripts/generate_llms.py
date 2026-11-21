@@ -13,7 +13,6 @@ AUTHOR = "Md. Ridwanul Islam Muntakim"
 KNOWLEDGE_CATEGORIES = {
     "technology": "Technology",
     "psychology": "Psychology",
-    "ruqyah": "Ruqyah Guides",
 }
 
 def load_json(filename):
@@ -63,8 +62,8 @@ def build_llms_txt():
         "## About",
         "",
         "riwnlmk's Shelf is a personal website organized into Knowledge, Books, Anime, and Events. "
-        "Knowledge contains Technology, Psychology, and Ruqyah content. The site also publishes "
-        "a combined RSS feed for supported knowledge posts.",
+        "Knowledge contains Technology and Psychology content. The site also publishes "
+        "a combined RSS feed for Knowledge posts.",
         "",
     ]
 
@@ -81,16 +80,6 @@ def build_llms_txt():
             sections.append(item_link(post.get("title") or f"{title} — {post_id}", url, description))
         sections.append("")
 
-    audio_items = load_json("ruqyah-audio.json")
-    sections.extend(["## Ruqyah | Recitations", ""])
-    if audio_items:
-        for item in audio_items:
-            url = f"{BASE_URL}/?recitation={item.get('id')}"
-            description = clean_text(item.get("description") or item.get("reciter") or item.get("title"))
-            sections.append(item_link(item.get("title") or item.get("name") or f"Recitation {item.get('id')}", url, description))
-    else:
-        sections.append("No recitations are currently published.")
-    sections.append("")
 
     for filename, heading, query_key in (
         ("books.json", "Books", "book"),
@@ -129,7 +118,7 @@ def build_llms_txt():
         ""])
     output = ROOT / "llms.txt"
     output.write_text("\n".join(sections), encoding="utf-8")
-    print(f"Generated llms.txt ({sum(len(load_json(name)) for name in ['technology.json', 'psychology.json', 'ruqyah.json', 'ruqyah-audio.json', 'books.json', 'anime.json', 'events.json'])} entries)")
+    print(f"Generated llms.txt ({sum(len(load_json(name)) for name in ['technology.json', 'psychology.json', 'books.json', 'anime.json', 'events.json'])} entries)")
 
 
 if __name__ == "__main__":

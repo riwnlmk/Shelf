@@ -13,10 +13,9 @@ BASE_URL = "https://riwnlmk.github.io/Shelf"
 CATEGORIES = {
     "technology": "Technology",
     "psychology": "Psychology",
-    "ruqyah": "Ruqyah Guides",
 }
 FEED_TITLE = "riwnlmk's Shelf"
-FEED_DESCRIPTION = "New posts from the Technology, Psychology, and Ruqyah Guides sections of riwnlmk's Shelf."
+FEED_DESCRIPTION = "New posts from the Technology and Psychology sections of riwnlmk's Shelf."
 CONTENT_NS = "http://purl.org/rss/1.0/modules/content/"
 ATOM_NS = "http://www.w3.org/2005/Atom"
 ET.register_namespace("content", CONTENT_NS)
