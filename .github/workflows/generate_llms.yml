@@ -1,4 +1,4 @@
-#name: Generate riwnlmk's Shelf llms.txt
+name: Generate riwnlmk's Shelf llms.txt
 
 on:
   push:
