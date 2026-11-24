@@ -198,6 +198,7 @@ No entries are currently published in this section.
 - [OpenAQL Business Travel](https://riwnlmk.github.io/Shelf/?event=4): 09 August 2026 | Travel | Dhaka, Bangladesh
 - [Started Our Own Household](https://riwnlmk.github.io/Shelf/?event=5): 16 September 2026 | Life Milestones | Bangladesh
 - [Family Getaway](https://riwnlmk.github.io/Shelf/?event=6): 02 November 2026 | Travel | Gazipur, Bangladesh
+- [Started Sharing One Plate](https://riwnlmk.github.io/Shelf/?event=7): 23 November 2026 | Milestones
 
 ## Content and Usage
 
