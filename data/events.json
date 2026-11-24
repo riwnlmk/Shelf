@@ -71,5 +71,17 @@
     "eventIcon": "fa-train",
     "eventLocation": "Gazipur, Bangladesh",
     "eventWith": "Ayesha Siddika"
+  },
+  {
+    "id": 7,
+    "avatar": "assets/images/riwnlmk.png",
+    "user": "Md. Ridwanul Islam Muntakim",
+    "date": "23 November 2026",
+    "type": "event",
+    "title": "Started Sharing One Plate",
+    "eventDate": "23 November 2026",
+    "eventCategory": "Milestones",
+    "eventIcon": "fa-solid fa-utensils",
+    "eventWith": "Ayesha Siddika"
   }
 ]
